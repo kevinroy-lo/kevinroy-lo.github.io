@@ -1,5 +1,5 @@
 ---
-title:  thinking-faith-the-crown
+title:  Thinking-Faith-The-Crown
 date: 2019-12-17 21:29:45
 tags: ["Movie","The Crown"]
 categories:
@@ -7,8 +7,8 @@ categories:
  - 成长感悟
 copyright: true
 reward: true
-rating: true
-related_posts: true
+rating: false
+related_posts: false
 ---
 ![season02-thumb.jpg](https://i.loli.net/2019/12/17/TqMcxaSYRE6sLgA.jpg "The Crown")
 
