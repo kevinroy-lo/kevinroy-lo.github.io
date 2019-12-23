@@ -498,9 +498,9 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # more info please open https://valine.js.org
 valine:
-  enable: true # When enable is set to be true, leancloud_visitors is recommended to be closed for the re-initialization problem within different leancloud adk version.
-  appid: # your leancloud application appid
-  appkey: # your leancloud application appkey
+  enable: false # When enable is set to be true, leancloud_visitors is recommended to be closed for the re-initialization problem within different leancloud adk version.
+  appid: mxdCHzfNC3EKMktpJtPerX5A-gzGzoHsz
+  appkey: vJSulpPh3c5SXDipekLJpf0A
   notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: false # Verification code
   placeholder: " " # comment box placeholder
@@ -626,7 +626,7 @@ vkontakte_api:
 # To get your ID visit https://widgetpack.com
 rating:
   enable: true
-  id:
+  id: 22405
   color: fadb14
 # ---------------------------------------------------------------
 
@@ -760,7 +760,7 @@ tabs:
 # Reading progress bar
 # Dependencies: https://github.com/theme-next/theme-next-reading-progress
 reading_progress:
-  enable: false
+  enable: true
   color: "#37c6c0"
   height: 2px
 
@@ -896,7 +896,7 @@ vendors:
   # See: http://VelocityJS.org
   # velocity_ui: //cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.ui.min.js
   # velocity_ui: //cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js
-  velocity_ui: //cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.ui.min.js
+  velocity_ui: https://cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.ui.min.js
 
   # Internal version: 0.7.9
   # See: https://faisalman.github.io/ua-parser-js/
@@ -910,6 +910,7 @@ vendors:
   # Example:
   # fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
   # fontawesome: //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css
+  # fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
   fontawesome: //cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css
 
   # Internal version: 1
@@ -998,14 +999,14 @@ images: images
 # Tidio online chat
 # see: https://www.tidiochat.com
 tidio:
-  enable: true
-  key: # Public_Key
+  enable: false
+  key: clnfu3jizqzyzzxojsveispjdf8fftkn
 
 # hotjar
 # see: https://www.hotjar.com/
 hotjar:
   enable: true
-  siteID: # site ID
+  siteID: 1617764
 
 # window woblle
 wobble:
