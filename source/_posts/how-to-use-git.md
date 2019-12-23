@@ -46,7 +46,7 @@ git reset HEAD <file>
 {% note danger%}
 // 注意和版本回退之间的区别，有无--hard 选项。
 git reset --hard HEAD^
-{%endnote%}
+{% endnote %}
 
 ### add 暂存区
 
