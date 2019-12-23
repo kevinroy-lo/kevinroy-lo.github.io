@@ -3,7 +3,7 @@ title: 重学Git
 copyright: true
 rating: true
 related_posts: false
-tags:
+tags: Git
 categories:
 ---
 
