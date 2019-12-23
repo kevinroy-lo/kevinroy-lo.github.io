@@ -161,7 +161,7 @@ detect renames, optionally set similarity index
 
 {% note info%}
 相当于 git hash-object 命令，把 test.txt 的当前内容压缩成二进制文件，存入 Git。压缩后的二进制文件，称为一个 Git 对象，保存在.git/objects 目录。这个命令还会计算当前内容的 SHA1 哈希值（长度 40 的字符串），作为该对象的文件名。子目录，目录名是哈希值的前 2 个字符，
-{% noteend %}
+{% endnote %}
 
 ```bash
 usage: git add [<options>] [--] <pathspec>...
