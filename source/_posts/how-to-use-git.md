@@ -23,16 +23,14 @@ categories:
 git checkout -- readme.txt
 ```
 
+{% note danger%}
 意思就是，把 readme.txt 文件在工作区的修改全部撤销，这里有两种情况：
 一种是 readme.txt 自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
 一种是 readme.txt 已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
 
-{% note danger%}
-
-```bash
-注意要加-- 。和 git-checkout - Switch branches or restore working tree files 区别。
-git checkout [-q] [-f] [-m] [<branch>]
-```
+注意要加-- 。
+git-checkout - Switch branches or restore working tree files
+git checkout [-q][-f] [-m][<branch>]
 
 {%endnote%}
 
