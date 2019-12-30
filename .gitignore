@@ -9,6 +9,7 @@ node_modules/
 public/
 .deploy*/
 source/_drafts/*
+.vscode/
 
 themes/next/source/lib/*
 
