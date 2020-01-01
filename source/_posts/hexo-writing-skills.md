@@ -1,5 +1,5 @@
 ---
-title: Hexo搭建个人博客系列：写作技巧篇
+title: 【转】Hexo搭建个人博客系列：写作技巧篇
 date: 2018-11-20 20:09:52
 copyright: true
 reward: true

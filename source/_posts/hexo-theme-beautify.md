@@ -1,5 +1,5 @@
 ---
-title: Hexo搭建个人博客系列：主题美化篇
+title: 【转】Hexo搭建个人博客系列：主题美化篇
 date: 2018-11-20 20:09:53
 copyright: true
 reward: true
