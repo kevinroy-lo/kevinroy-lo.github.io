@@ -11,7 +11,7 @@ categories:
 - 博客
 ---
 
-![题图](http://yearito-1256884783.image.myqcloud.com/thumbnails/coast.jpg!thumbnail "Photo by Marina Weishaupt")
+![题图](https://yearito-1256884783.image.myqcloud.com/thumbnails/coast.jpg!thumbnail "Photo by Marina Weishaupt")
 
 本文介绍了在Next主题的基础上进一步对博客进行美化的方案，主要包括:
 
@@ -71,7 +71,7 @@ font:
 
 默认情况下标签前缀是 `#` 字符，用户可以通过修改主题源码将标签的字符前缀改为图标前缀，更改后效果如下：
 
-![标签图标前缀](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181113045027074.png "标签图标前缀")
+![标签图标前缀](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181113045027074.png "标签图标前缀")
 
 在文章布局模板中找到文末标签相关代码段，将 `#` 换成 `<i class="fa fa-tags"></i>` 即可：
 
@@ -99,7 +99,7 @@ Next中使用 [FontAwesome](https://fontawesome.com/v4.7.0/icons/) 作为图标�
 
 在文末添加结束标记，效果如下：
 
-![文末结束标记](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181113045252399.png "文末结束标记")
+![文末结束标记](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181113045252399.png "文末结束标记")
 
 新建布局模板文件 post-end-tag.swig，添加如下代码：
 
@@ -229,7 +229,7 @@ Next主题可以通过安装插件快速为站点添加不同效果的动态背�
 
 应用效果如下图：
 
-![canvas-nest 动态背景](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181115092103046.png "canvas-nest 动态背景")
+![canvas-nest 动态背景](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181115092103046.png "canvas-nest 动态背景")
 
 该功能由 [theme-next-canvas-nest](https://github.com/theme-next/theme-next-canvas-nest) 插件提供，在根目录下执行如下命令：
 
@@ -257,13 +257,13 @@ canvas_nest:
 
 {% tabs Three 三维动效 %}
   <!-- tab three-waves -->
-    ![](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181115091950761.png "")
+    ![](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181115091950761.png "")
   <!-- endtab -->
   <!-- tab canvas-lines -->
-    ![](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181115091914602.png "")
+    ![](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181115091914602.png "")
   <!-- endtab -->
   <!-- tab canvas-sphere -->
-    ![](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181115091826700.png "")
+    ![](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/20181115091826700.png "")
   <!-- endtab -->
 {% endtabs %}
 
@@ -292,7 +292,7 @@ canvas_sphere: false
 
 ## 随机三角丝带
 
-![随机三角丝带](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/evan-you.png "随机三角丝带")
+![随机三角丝带](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/evan-you.png "随机三角丝带")
 
 {% note info %}
 该功能由 Vue 作者 [尤雨溪](http://evanyou.me/) 首创。本章节中核心代码来源于 [DIYgod](https://diygod.me/) 编写的 [sagiri](
@@ -355,7 +355,7 @@ evanyou: true
 
 该功能由 [hexo-helper-live2d](https://github.com/EYHN/hexo-helper-live2d) 插件支持，效果如下图：
 
-![live2d 看板娘](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/live2d.gif "live2d 看板娘")
+![live2d 看板娘](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/live2d.gif "live2d 看板娘")
 
 在站点根目录下执行以下命令安装依赖：
 
@@ -451,7 +451,7 @@ $ npm install live2d-widget-model-shizuku
 
 # 边缘摆动效果
 
-![wobblewindow 边缘摆动](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/wobblewindow.gif "wobblewindow 边缘摆动")
+![wobblewindow 边缘摆动](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/wobblewindow.gif "wobblewindow 边缘摆动")
 
 在 [猪猪侠的博客](https://www.ofind.cn/) 里发现的这种特效，觉得挺有意思的，就从他Github上给扒过来了
 
@@ -580,7 +580,7 @@ wobble:
 
 从 [DIYgod的博客](https://diygod.me/) 里扒来的，效果如下：
 
-![回到顶部](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/back-to-top.gif "回到顶部")
+![回到顶部](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/back-to-top.gif "回到顶部")
 
 原理很简单，将 back-to-top 按钮添加图片背景，并添加CSS3动效即可。
 
@@ -627,16 +627,16 @@ wobble:
 
 {% tabs 鼠标点击特效 %}
   <!-- tab 礼花特效 -->
-    ![](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/cursor-fireworks.gif)
+    ![](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/cursor-fireworks.gif)
   <!-- endtab -->
   <!-- tab 爆炸特效 -->
-    ![](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/cursor-explosion.gif)
+    ![](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/cursor-explosion.gif)
   <!-- endtab -->
   <!-- tab 浮出爱心 -->
-    ![](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/cursor-love.gif)
+    ![](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/cursor-love.gif)
   <!-- endtab -->
   <!-- tab 浮出文字 -->
-    ![](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/cursor-text.gif)
+    ![](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/cursor-text.gif)
   <!-- endtab -->
 {% endtabs %}
 
@@ -696,7 +696,7 @@ cursor_effect: fireworks
 本章节参考 [千灵夙赋 | Hexo 优化汇总 #31](https://qianling.pw/hexo-optimization/)，原文出自 [龙笑天下 | 给 WordPress 博客网站添加评论输入打字礼花及震动特效](https://www.ilxtx.com/comment-input-effects.html)
 {% endnote %}
 
-![打字特效](http://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/typing-effect.gif "打字特效")
+![打字特效](https://yearito-1256884783.image.myqcloud.com/hexo-theme-beautify/typing-effect.gif "打字特效")
 
 点击下方按钮下载相应的脚本，并置于 themes\\next\\source\\js\\ 目录下：
 

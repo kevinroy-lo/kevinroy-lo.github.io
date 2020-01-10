@@ -11,7 +11,7 @@ related_posts: false
 date: 2019-01-29 13:06:04
 ---
 
-![iconfont 首页](http://yearito-1256884783.image.myqcloud.com/thumbnails/iconfont.png!thumbnail "iconfont 首页")
+![iconfont 首页](https://yearito-1256884783.image.myqcloud.com/thumbnails/iconfont.png!thumbnail "iconfont 首页")
 
 阿里妈妈出品的 iconfont 是一个矢量图标管理、交流平台，支持矢量图、位图等格式下载，并提供便捷的前端项目植入引用方法，是当前Web开发中主流的icon解决方案。
 
@@ -73,7 +73,7 @@ date: 2019-01-29 13:06:04
 <i class="iconfont">&#x33;</i>
 ```
 
-![Unicode 引用](http://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/unicode.png "Unicode 引用")
+![Unicode 引用](https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/unicode.png "Unicode 引用")
 
 # Font Class
 
@@ -91,7 +91,7 @@ date: 2019-01-29 13:06:04
 <i class="iconfont icon-full-screen"></i>
 ```
 
-![Font Class 引用](http://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/font-class.png "Font Class 引用")
+![Font Class 引用](https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/font-class.png "Font Class 引用")
 
 这个方案只是给Unicode重新包装了一翻，变得更方便使用了而已，为什么这么说呢？我们直接在浏览器中打开这个CSS文件来看看名堂（有删减）：
 
@@ -182,11 +182,11 @@ date: 2019-01-29 13:06:04
 </svg>
 ```
 
-![Symbol 引用](http://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/symbol.png "Symbol 引用")
+![Symbol 引用](https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/symbol.png "Symbol 引用")
 
 通过这种方案引入 iconfont 图标，会在页面中发现多了一个SVG标签：
 
-![SVG 图标仓库](http://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/svg-palette.png "SVG 图标仓库")
+![SVG 图标仓库](https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/svg-palette.png "SVG 图标仓库")
 
 你可以把这个SVG标签理解为一个图标仓库，或者说一个原始画板，其样式被刻意隐藏了起来：
 
@@ -199,7 +199,7 @@ overflow: hidden;
 
 查看页面中引入的图标元素，会发现 `use` 标签里多了相应图标的SVG矢量元素：
 
-![图标元素](http://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/quote-icon.png "图标元素")
+![图标元素](https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/quote-icon.png "图标元素")
 
 可以理解为这里从图标仓库中引用了一份SVG代码以显示图标，这就是Symbol方案的关键所在了。
 

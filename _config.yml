@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://kevinroy.tk
+url: https://kevinroy.tk
 root: /
 permalink: posts/:title.html
 permalink_defaults:
@@ -82,6 +82,10 @@ deploy:
     repo: git@git.coding.net:lqyygtaps0312/zoroblog.git
     branch: master
     message: Kevin's blog.
+  # - type: git
+  #   repo: git@gitlab.com:kevinroy0312/kevinroy_blog.git
+  #   branch: master
+  #   message: Kevin's blog.
 #- type: baidu_url_submitter # 百度
 
 symbols_count_time:

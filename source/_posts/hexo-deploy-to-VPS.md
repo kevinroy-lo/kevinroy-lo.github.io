@@ -11,7 +11,7 @@ categories:
 - 博客
 ---
 
-![题图](http://yearito-1256884783.image.myqcloud.com/thumbnails/dolphin.jpg!thumbnail "Photo by Felix Hernandez Dreamphography")
+![题图](https://yearito-1256884783.image.myqcloud.com/thumbnails/dolphin.jpg!thumbnail "Photo by Felix Hernandez Dreamphography")
 
 本文主要介绍了在将Hexo博客部署上线过程中将会遇到的一系列问题。
 
@@ -187,7 +187,7 @@ cp -rf ${TMP_GIT_CLONE}/* ${PUBLIC_WWW}/
 
 输入 `:wq` 保存并退出，此时可以看到 post-receive 文件只有读写权限，没有执行权限：
 
-![修改 post-receive 权限前](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/post-receive-before.png "修改 post-receive 权限前")
+![修改 post-receive 权限前](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/post-receive-before.png "修改 post-receive 权限前")
 
 执行以下代码：
 
@@ -197,11 +197,11 @@ chmod +x post-receive
 
 执行后可以看到 post-receive 已获得执行权限：
 
-![修改 post-receive 权限后](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/post-receive-after.png "修改 post-receive 权限后")
+![修改 post-receive 权限后](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/post-receive-after.png "修改 post-receive 权限后")
 
 然后在本地站点目录下执行 `hexo deploy -g`，如果出现我们之前设定好的 `remote: post-receive hook is running...` 提示，且没有其他权限错误，则说明钩子正确执行了，从远程仓库拷贝资源成功，此时打开 /var/www/blog.yearito/ 目录可以看到完整的博客静态资源文件。
 
-![Git Hooks 拷贝资源成功](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/auto-deploy-success.png "Git Hooks 拷贝资源成功")
+![Git Hooks 拷贝资源成功](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/auto-deploy-success.png "Git Hooks 拷贝资源成功")
 
 ## 配置Nginx服务器
 
@@ -261,7 +261,7 @@ nginx -s reload //重新加载配置文件
 
 博客上线后，需要关注页面的加载速度。[Google PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) 可用于帮助分析网页加载速度瓶颈，该网站将会针对指定域名进行在线测试，并提供一份详细的页面加载分析报告，报告中还会根据页面资源加载情况给出合理的优化建议及预期优化效果，因此用户可以有的放矢的进行性能优化专项整改。
 
-![Google PageSpeed Insights](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/pagespeed-insights.png "Google Pagespeed Insights")
+![Google PageSpeed Insights](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/pagespeed-insights.png "Google Pagespeed Insights")
 
 虽然可以从报告中了解到站点的加载性能瓶颈，但是，报告中仅是提供优化建议，具体的落实还须自己实施。本章节主要介绍CDN加速和代码合并压缩两种比较常见的优化方案。
 
@@ -269,7 +269,7 @@ nginx -s reload //重新加载配置文件
 
 在控制台的Network Tab页中可以查看到页面加载瀑布流。在此需要勾选 Disable cache 以避免缓存干扰分析。另外，在所有静态资源中，对加载速度影响较大且存在大幅优化空间的主要还是JS脚本，所以我们先拿它开刀。
 
-![页面加载瀑布流](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/before-optimize.png "页面加载瀑布流")
+![页面加载瀑布流](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/before-optimize.png "页面加载瀑布流")
 
 首先理解一下底部信息栏中的这行文字：
 
@@ -322,7 +322,7 @@ vendors:
 
 使用CDN加速后页面加载瀑布流如下：
 
-![CDN加载三方插件后的页面加载瀑布流](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/after-optimize.png "CDN加载三方插件后的页面加载瀑布流")
+![CDN加载三方插件后的页面加载瀑布流](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/after-optimize.png "CDN加载三方插件后的页面加载瀑布流")
 
 DOM树的渲染完成时间缩减到了654 ms，**也就是说刷新页面后654 ms后就可以看到页面内容了，相比优化前的4.36 s 有了极大的提升**。
 
@@ -402,7 +402,7 @@ CDN域名加速也有几个坑点：
 
 在搜索引擎中输入 site:yearito.cn，会发现暂时还搜不到自己的站点：
 
-![谷歌搜索结果](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/google-search-result.png "谷歌搜索结果")
+![谷歌搜索结果](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/google-search-result.png "谷歌搜索结果")
 
 想要搜到自己的站点，首先要将个人网站提交给搜索引擎收录。针对不同的搜索引擎需要分别提交网址，但提交的步骤是大同小异的：
 
@@ -439,7 +439,7 @@ $ npm install hexo-generator-baidu-sitemap --save-dev
 
 在 [Google Search Console](https://search.google.com/search-console) 中提交站点域名，此时会提供几种验证网站所有权的方法，展开 **其他验证方法** 中的 **HTML 标记**，然后将 `meta` 标签的 `content` 属性值复制到主题配置文件中：
 
-![Google 选择验证方式](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/google-verify-site.png "Google 选择验证方式")
+![Google 选择验证方式](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/google-verify-site.png "Google 选择验证方式")
 
 ``` yaml themes\next\_config.yml
 # Google Webmaster tools verification setting
@@ -455,7 +455,7 @@ google_site_verification: cEGDN99xe2gtAy97He-NH4ihW3Y4GrGQl_xTxp7p3sg
 
 回到 Search Console 页面点击验证按钮，验证成功后将进入控制台，点击左侧 **站点地图** 菜单，在域名后输入 sitemap.xml 并提交，即可添加新的站点地图。
 
-![添加站点地图](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/google-add-sitemap.png "添加站点地图")
+![添加站点地图](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/google-add-sitemap.png "添加站点地图")
 
 在新版的 Search Console 中只能添加站点地图，却没有删除站点地图的接口，后来在 [Google Search Console 删除站点地图方法](https://www.dear.today/731.html) 一文中发现了解决办法：需要在 [旧版 Search Console](www.google.com/webmasters/tools/sitemap-list) 中才能删除。
 
@@ -463,7 +463,7 @@ google_site_verification: cEGDN99xe2gtAy97He-NH4ihW3Y4GrGQl_xTxp7p3sg
 
 在 [百度搜索资源平台](https://ziyuan.baidu.com/site) 中提交站点域名，勾选站点属性，最后一步中同样会要求验证网站的所有权身份，选择 **HTML标签验证**，然后将 `meta` 标签的 `content` 属性值复制到主题配置文件中：：
 
-![Baidu 选择验证方式](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/baidu-verify-site.png "Baidu 选择验证方式")
+![Baidu 选择验证方式](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/baidu-verify-site.png "Baidu 选择验证方式")
 
 ``` yaml themes\next\_config.yml
 #  Webmaster tools verification setting
@@ -556,7 +556,7 @@ baidu_push: true
 
 在 [必应网站管理员](https://www.bing.com/toolbox/webmaster) 中提交站点域名，此时可以同时输入 sitemap 文件链接，然后同样会进入网站所有权验证页面，在选择二中复制 `meta` 标签的 `content` 属性值到主题配置文件中：
 
-![Bing 选择验证方式](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/bing-verify-site.png "Bing 选择验证方式")
+![Bing 选择验证方式](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/bing-verify-site.png "Bing 选择验证方式")
 
 ``` yaml themes\next\_config.yml
 # Bing Webmaster tools verification setting
@@ -607,13 +607,13 @@ SEO（Search Engine Optimization）意指搜索引擎优化，可以帮助提高
 
 虽然description不影响搜索排名，但搜索引擎通常会将description作为快照显示在搜索结果页面作为内容补充，因此合适的description还是有助于吸引读者的目光增加网站的点击率的。
 
-![搜索结果快照](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/search-snapshot.png "搜索结果快照")
+![搜索结果快照](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/search-snapshot.png "搜索结果快照")
 
 如果页面上没有description元标签的话，搜索引擎可能会从页面中自动抓取部分内容作为页面描述，至于说抓取质量可就没法保证了。
 
 默认情况下，Next会使用 tags 作为页面 keywords，使用文章前两百个字符作为description。如果文章页面内含有 `<!-- more -->` 内容分隔符，则会使用分隔符之前的正文 description。用户也可以在Front-Matter中添加 keywords 和 description属性来手动指定页面meta标签内容。
 
-![keywords & description](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/keywords-description.png "keywords & description")
+![keywords & description](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/keywords-description.png "keywords & description")
 
 越是容易被人为操控的SEO影响因子，影响力就会越来越低，所以：
 
@@ -625,7 +625,7 @@ Nginx默认的404页面有些简陋，这里有两种自定义404页面的方案
 
 **第一种是仍沿用Hexo主题的页面框架，基于 page 布局搭建404页面。**
 
-![基于主题布局的404页面](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/404pages.png "基于主题布局的404页面")
+![基于主题布局的404页面](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/404pages.png "基于主题布局的404页面")
 
 在 source 目录下新建 404.md 文件，添加如下内容：
 
@@ -696,7 +696,7 @@ $ npm install hexo-generator-feed --save
 
 然后站点概览中就会自动出现feed链接：
 
-![站点 feed 链接](http://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/rss-feed.png "站点 feed 链接")
+![站点 feed 链接](https://yearito-1256884783.image.myqcloud.com/hexo-deploy-to-VPS/rss-feed.png "站点 feed 链接")
 
 在主题配置文件中不需要设置rss的值，置空即可，如果设置为 `true` 反而会导致如下报错：
 

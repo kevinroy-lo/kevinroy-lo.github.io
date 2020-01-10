@@ -25,23 +25,23 @@ categories:
 
 自学游泳的网站，提供各个泳姿各个角度的三维模型动画。
 
-![Swimming](http://yearito-1256884783.image.myqcloud.com/minority-websites/Swimming.jpg)
+![Swimming](https://yearito-1256884783.image.myqcloud.com/minority-websites/Swimming.jpg)
 
 
 # [In Pieces](http://species-in-pieces.com)
 
 30个濒危物种
 
-![In Pieces](http://yearito-1256884783.image.myqcloud.com/minority-websites/In-Pieces.png)
+![In Pieces](https://yearito-1256884783.image.myqcloud.com/minority-websites/In-Pieces.png)
 
 # [Nippon Colors](http://nipponcolors.com/)
 
 日本传统配色
 
-![Nippon Colors](http://yearito-1256884783.image.myqcloud.com/minority-websites/Nippon-Colors.jpg)
+![Nippon Colors](https://yearito-1256884783.image.myqcloud.com/minority-websites/Nippon-Colors.jpg)
 
 # [Chinese Colors](http://zhongguose.com/)
 
 中国传统配色
 
-![Chinese Colors](http://yearito-1256884783.image.myqcloud.com/minority-websites/Chinese-Colors.jpg)
+![Chinese Colors](https://yearito-1256884783.image.myqcloud.com/minority-websites/Chinese-Colors.jpg)

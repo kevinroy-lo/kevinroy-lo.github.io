@@ -12,7 +12,7 @@ date: 2019-01-29 17:04:08
 ---
 
 
-![题图](http://yearito-1256884783.image.myqcloud.com/thumbnails/women-with-coffee.jpg!thumbnail "Photo by Mat Szulik")
+![题图](https://yearito-1256884783.image.myqcloud.com/thumbnails/women-with-coffee.jpg!thumbnail "Photo by Mat Szulik")
 
 最近做小程序开发，本来是个私人的小项目，所以一开始都是从 iconfont 上下载png文件再用图片标签引入的，后来想实现图标的点击态变色，发现以前的方案太原始太落后，不好维护，还是得上矢量图形的引入方案。然后就开始尝试照搬Web中引入iconfont图标的解决方案，才发现事情并没有想象的这么简单。
 
@@ -41,7 +41,7 @@ iconfont 提供的三种方案中，Unicode和Font Class都是引入CSS样式通
 
 将Font Class的样式引用链接复制到浏览器中直接打开：
 
-![Font Class 引用链接](http://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/font-class.png "Font Class 引用链接")
+![Font Class 引用链接](https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/font-class.png "Font Class 引用链接")
 
 在小程序目录下新建WXSS文件，将CSS代码复制进来：
 
@@ -105,7 +105,7 @@ iconfont 提供的三种方案中，Unicode和Font Class都是引入CSS样式通
 
 在微信开发者工具中查看效果如下：
 
-![Font Class 方案效果](http://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/test-font-class.png "Font Class 方案效果")
+![Font Class 方案效果](https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/test-font-class.png "Font Class 方案效果")
 
 {% note info %}
 得到结论：Font Class方案可行，具体实现步骤如上。
@@ -175,11 +175,11 @@ iconfont 提供的三种方案中，Unicode和Font Class都是引入CSS样式通
 
 微信开发者工具中显示如下：
 
-![微信开发者工具中的效果](http://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/icon-in-devtool.png "微信开发者工具中的效果")
+![微信开发者工具中的效果](https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/icon-in-devtool.png "微信开发者工具中的效果")
 
 当我在手机上预览的时候就傻了，图标居然不显示了：
 
-![真机调试的效果](http://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/icon-in-phone.png "真机调试的效果")
+![真机调试的效果](https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/icon-in-phone.png "真机调试的效果")
 
 测试了一下真机环境下的普通视图容器中是可以显示icon的，所以首先排除字体引入失败的可能性。
 
@@ -227,7 +227,7 @@ iconfont 提供的三种方案中，Unicode和Font Class都是引入CSS样式通
 
 最后，在一篇社区讨论贴 [cover-view中使用iconfont图标无法显示](https://developers.weixin.qq.com/community/develop/doc/000a60f7d58a982f08d7ddfc456000) 中看到了一个官方的回答：
 
-![官方回答](http://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/official-answer.jpg "官方回答")
+![官方回答](https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/official-answer.jpg "官方回答")
 
 看来原生组件中的图标引入方案除了 cover-image 标签也别无他法了。
 

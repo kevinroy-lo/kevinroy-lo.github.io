@@ -11,7 +11,7 @@ categories:
 - 博客
 ---
 
-![题图](http://yearito-1256884783.image.myqcloud.com/thumbnails/snow-mountain.jpg!thumbnail "Photo by Przemyslaw Kruk")
+![题图](https://yearito-1256884783.image.myqcloud.com/thumbnails/snow-mountain.jpg!thumbnail "Photo by Przemyslaw Kruk")
 
 本篇文章介绍了如何为Hexo博客集成更多强大的功能。
 
@@ -29,7 +29,7 @@ categories:
 
 该功能由 [不蒜子](http://ibruce.info/2015/04/04/busuanzi/) 提供，效果如下图：
 
-![站点访问统计](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/busuanzi-site-footer.png "站点访问统计")
+![站点访问统计](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/busuanzi-site-footer.png "站点访问统计")
 
 左侧数据表示独立访客数UV，右侧数据表示网站浏览量PV，访客数和浏览量的区别在于一个用户连续点击n篇文章，会记录n次浏览量，但只记录一次访客数。
 
@@ -105,7 +105,7 @@ footer:
 
 在站点底部显示站点已运行时间，效果如下：
 
-![站点运行时间](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/site-running-time.png "站点运行时间")
+![站点运行时间](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/site-running-time.png "站点运行时间")
 
 在主题自定义布局文件中添加以下代码：
 
@@ -188,11 +188,11 @@ footer:
 
 该功能基于 [LeanCloud](https://leancloud.cn) 提供后端数据服务，效果如下：
 
-![文章访问量](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/post-pageviews.png "文章访问量")
+![文章访问量](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/post-pageviews.png "文章访问量")
 
 在LeanCloud上注册账号并创建应用，新建一个名为 Counter 的Class，ACL权限设置为 **无限制**：
 
-![新建Counter类](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/LeanCloud-Counter-class.png "新建Counter类")
+![新建Counter类](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/LeanCloud-Counter-class.png "新建Counter类")
 
 {% note info %}
 在LeanCloud中的Class可以理解为数据库中的数据表。Counter用于存储记录文章访问量，记录是以url作为唯一依据的，所以根据默认的permalink组成结构，如果你更改了文章的发布日期和标题中的任意一个，都会造成文章阅读数值的清零重计。
@@ -251,9 +251,9 @@ post:
 
 该功能由 [hexo-symbols-count-time](https://github.com/theme-next/hexo-symbols-count-time) 提供，效果如下图：
 
-![站点字数统计](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/site-word-count.png "站点字数统计")
+![站点字数统计](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/site-word-count.png "站点字数统计")
 
-![文章字数统计](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/post-word-count.png "文章字数统计")
+![文章字数统计](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/post-word-count.png "文章字数统计")
 
 在根目录下执行如下命令安装相关依赖
 
@@ -298,7 +298,7 @@ symbols_count_time:
 
 离开和进入页面时动态修改Tab标签中的标题。
 
-![搞怪网页标题](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/title-trick.png "搞怪网页标题")
+![搞怪网页标题](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/title-trick.png "搞怪网页标题")
 
 在主题自定义布局文件中添加以下代码：
 
@@ -350,7 +350,7 @@ title_trick:
 
 该功能由 [hexo-generator-searchdb](https://github.com/theme-next/hexo-generator-searchdb) 提供，效果如下图：
 
-![站内搜索](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/local-search.png "站内搜索")
+![站内搜索](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/local-search.png "站内搜索")
 
 在根目录下执行以下命令安装相关依赖：
 
@@ -418,7 +418,7 @@ search:
 
 添加文章阅读次数排行统计页面，效果如下图：
 
-![热门文章排行榜](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/top10.png "热门文章排行榜")
+![热门文章排行榜](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/top10.png "热门文章排行榜")
 
 该功能同样是基于LeanCloud提供的后端服务支持。具体实现方案如下：
 
@@ -499,7 +499,7 @@ date: 2018-10-30 00:54:50
 
 本是根据 [nMask | Hexo搭建博客教程 #7.16](https://thief.one/2017/03/03/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/) 引入v0.6.1的脚本来实现该功能，结果发现出现如下Bug：
 
-![LeanCloud v0.6.1 Bug](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/LeanCloud-bug.png "LeanCloud v0.6.1 Bug")
+![LeanCloud v0.6.1 Bug](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/LeanCloud-bug.png "LeanCloud v0.6.1 Bug")
 
 后来根据 [LeanCloud | JavaScript SDK 安装指南](https://leancloud.cn/docs/leanstorage_guide-js.html) 引入v3.10.0的最新脚本，使用过程中虽然功能正常，但是控制台有报错信息:
 
@@ -513,7 +513,7 @@ date: 2018-10-30 00:54:50
 
 为站点添加豆瓣阅读/电影/游戏页面，效果如下：
 
-![豆瓣电影](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/douban-movies.png "豆瓣电影")
+![豆瓣电影](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/douban-movies.png "豆瓣电影")
 
 在根目录下执行以下命令安装相关依赖：
 
@@ -598,11 +598,11 @@ $ hexo douban
 - 除了在线聊天，Tidio还可以在线发送邮件，以及关联接收Fackbook消息。
 - 在几款产品的界面风格中，还是 Tidio 看起来更加优雅一些，深得我爱。
 
-![Tidio 界面](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/Tidio.png "Tidio 界面")
+![Tidio 界面](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/Tidio.png "Tidio 界面")
 
 首先需要[注册Tidio账号](https://www.tidiochat.com/panel/login)，根据引导填写应用信息。进入控制台后，在 **SETTINGS** -> **Developer** -> **Project data** 中获取到Public Key：
 
-![Tidio Public Key](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/tidio-public-key.png "Tidio Public Key")
+![Tidio Public Key](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/tidio-public-key.png "Tidio Public Key")
 
 在主题配置文件下添加以下代码并补全Public Key：
 
@@ -640,7 +640,7 @@ tidio:
 
 刷新页面即可在右下角看到Tidio的会话标志了。接下来可以在Tidio控制台的 **Channel** -> **Live chat** ->  **Appearance** 中根据提示定制聊天对话框的主题外观和语言包：
 
-![定制Tidio样式与功能](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/Tidio-appearance.png "定制Tidio样式与功能")
+![定制Tidio样式与功能](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/Tidio-appearance.png "定制Tidio样式与功能")
 
 ## 行为监测与反馈
 
@@ -670,11 +670,11 @@ Hotjar通过以上八项具体而实用的功能为用户提供主客观相结�
 
 本站点中应用了Incoming即时反馈功能，读者可以通过该渠道评价页面或者提交勘误，点击悬挂在屏幕右侧的Feedback按钮弹出对话框，点击人物头像评价后将会跳转到如下界面：
 
-![Hotjar Incoming Feedback](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/hotjar-feedback.png "Hotjar Incoming Feedback")
+![Hotjar Incoming Feedback](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/hotjar-feedback.png "Hotjar Incoming Feedback")
 
 你可以在此页面输入反馈内容，并通过点击左下角的按钮在当前页面上标识目标元素，之后 hotjar 会将反馈内容连同带有高亮标识的页面截图一起提交到后台：
 
-![Incoming Feedback with screenshot ](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/hotjar-feedback-screenshot.png "Incoming Feedback with screenshot")
+![Incoming Feedback with screenshot ](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/hotjar-feedback-screenshot.png "Incoming Feedback with screenshot")
 
 {% note info %}
 更多关于 Incoming Feedback 的介绍请参考 [Incoming Feedback by Hotjar](https://www.hotjar.com/incoming-feedback)
@@ -682,7 +682,7 @@ Hotjar通过以上八项具体而实用的功能为用户提供主客观相结�
 
 在站点中集成Hotjar的各项功能，需要先 [注册 Hotjar 账号](https://insights.hotjar.com/register)，根据指引一步步填写站点信息，然后在控制面板首页中获取site ID：
 
-![Hotjar site ID](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/hotjar-site-id.png "Hotjar site ID")
+![Hotjar site ID](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/hotjar-site-id.png "Hotjar site ID")
 
 在主题配置文件下添加以下代码并补全site ID：
 
@@ -727,7 +727,7 @@ hotjar:
 
 如此即可将 Hotjar 嵌入到站内，接下来在 Hotjar 控制台菜单中点击 Incoming，然后根据引导一步步配置即时反馈服务即可：
 
-![配置 Incoming Feedback](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/hotjar-setup-incoming.png "配置 Incoming Feedback")
+![配置 Incoming Feedback](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/hotjar-setup-incoming.png "配置 Incoming Feedback")
 
 {% note info %}
 如果你在本站内发现了错别字、病句、失效链接、代码缩进不一致，可以通过页面右侧的Feedback反馈。
@@ -747,7 +747,7 @@ Next支持多款评论系统：
 
 博客的评论系统不需要太过复杂的功能，我的要求是一定要轻量级，足够简洁美观，并且支持Markdown语法，因此我首选Valine和gitment，这两个评论系统都是由国内个人开发的，在此向开发者致敬。
 
-![Valine 评论系统](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/valine-comments.png "Valine 评论系统")
+![Valine 评论系统](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/valine-comments.png "Valine 评论系统")
 
 Next已经内置了Valine组件，在主题配置文件中开启评论功能即可，同时，由于Valine是基于Leancloud提供后端服务的，所以需要填写LeanCloud的App ID和App Key。
 
@@ -791,7 +791,7 @@ Next暂时不支持通过配置的方式隐藏文章标题下的评论数量，�
 
 ## 文末版权声明
 
-![文章版权声明](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/post-copyright.png "文章版权声明")
+![文章版权声明](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/post-copyright.png "文章版权声明")
 
 在主题配置文件中开启文章底部的版权声明，版权声明默认使用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议，用户可以根据自身需要修改 `licence` 字段变更协议。
 
@@ -938,7 +938,7 @@ post:
 
 ## 添加打赏功能
 
-![文章打赏功能](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/post-reward.png "文章打赏功能")
+![文章打赏功能](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/post-reward.png "文章打赏功能")
 
 启用主题配置文件中的打赏相关字段，并将个人收款码图片置于 themes\\next\\source\\images\\ 目录下，注意保持图片命名与配置文件中一致：
 
@@ -981,7 +981,7 @@ alipay: /images/alipay.jpg
 
 添加灯箱功能，实现点击图片后放大聚焦图片，并支持幻灯片播放、全屏播放、缩略图、快速分享到社交媒体等，该功能由 [fancyBox](https://github.com/fancyapps/fancybox) 提供，效果如下：
 
-![fancyBox 灯箱](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/fancybox.png "fancyBox 灯箱")
+![fancyBox 灯箱](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/fancybox.png "fancyBox 灯箱")
 
 
 在根目录下执行以下命令安装相关依赖：
@@ -1002,7 +1002,7 @@ fancybox: true
 
 该功能由 [hexo-related-popular-posts](https://github.com/tea3/hexo-related-popular-posts) 插件提供，效果如下：
 
-![相关文章推荐](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/related-post.png "相关文章推荐")
+![相关文章推荐](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/related-post.png "相关文章推荐")
 
 在站点根目录中执行以下命令安装依赖：
 
@@ -1052,7 +1052,7 @@ related_posts:
 
 Next主题中已经集成了 widgetpack 的星级评分系统，用户无须再安装或引入插件脚本，只需在 widgetpack 中注册账号并修改主题配置即可，应用效果如下：
 
-![文章评分组件](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/rating.png "文章评分组件")
+![文章评分组件](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/rating.png "文章评分组件")
 
 在 [widgetpack](https://widgetpack.com) 中注册账号，根据引导填写应用名称和域名创建应用，创建后可在页面左上角看到应用id。
 
@@ -1071,7 +1071,7 @@ rating:
 
 在控制台中点击左上角展开菜单，在 **Rating** -> **Setting** 中将 Vote via 选项改为 Device(cookie) 以开启匿名评分，该选项将基于设备认证访问者身份：
 
-![开启匿名评分](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/rate-vote-via.png "开启匿名评分")
+![开启匿名评分](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/rate-vote-via.png "开启匿名评分")
 
 用户还可以在该页面设定 star 数量和大小。修改后记得勾选右下角的SAVE SETTING才会生效。
 
@@ -1108,7 +1108,7 @@ widgetpack 与前文提到的 hotjar 在评价反馈功能上的侧重点不一�
 
 该功能由 [hexo-blog-encrypt](https://github.com/MikeCoder/hexo-blog-encrypt) 插件提供，效果如下：
 
-![文章加密](http://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/post-encrypt.png "文章加密")
+![文章加密](https://yearito-1256884783.image.myqcloud.com/hexo-advanced-settings/post-encrypt.png "文章加密")
 
 在站点根目录中执行以下命令安装依赖：
 

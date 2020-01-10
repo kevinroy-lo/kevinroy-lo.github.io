@@ -11,7 +11,7 @@ categories:
 - 博客
 ---
 
-![题图](http://yearito-1256884783.image.myqcloud.com/thumbnails/forest.jpg!thumbnail "Photo by Ronald Jansen")
+![题图](https://yearito-1256884783.image.myqcloud.com/thumbnails/forest.jpg!thumbnail "Photo by Ronald Jansen")
 
 Hexo是一个高效简洁的静态博客框架，支持Markdown写作语法，插件丰富，主题优雅，部署方便。目前已成为多数人博客建站的选择。
 
@@ -71,7 +71,7 @@ $ hexo server
 
 该命令将会调用Markdown引擎解析项目中的博客内容生成网页资源，资源将会存于内存中，所以用户执行完命令之后在项目文件夹中是找不到相关的Web资源目录的。该命令还会启动一个简易的Web服务器用于提供对内存中网页资源的访问（工作机制类似于webpack-dev-server），Web服务器默认监听4000端口，用户可在浏览器中通过地址 `localhost:4000` 访问博客。
 
-![Hexo 默认主题首页](http://yearito-1256884783.image.myqcloud.com/hexo-get-started/20181102070503130.png "Hexo 默认主题首页")
+![Hexo 默认主题首页](https://yearito-1256884783.image.myqcloud.com/hexo-get-started/20181102070503130.png "Hexo 默认主题首页")
 
 此外，可以通过添加命令行参数来支持高级用法：
 
@@ -90,7 +90,7 @@ $ git clone https://github.com/theme-next/hexo-theme-next.git themes/next
 
 也可以在 [NexT版本发布页面](https://github.com/theme-next/hexo-theme-next/releases) 手动下载然后解压到根目录下的 `theme` 文件夹下，并将文件夹命名为 `next` 。这里可以看到 `theme` 文件夹下已经有一个名为 `landscape` 的文件夹了，这就是默认主题了。
 
-![NexT 版本发布页面下载链接](http://yearito-1256884783.image.myqcloud.com/hexo-get-started/20181022092625771.png "NexT 版本发布页面下载链接")
+![NexT 版本发布页面下载链接](https://yearito-1256884783.image.myqcloud.com/hexo-get-started/20181022092625771.png "NexT 版本发布页面下载链接")
 
 {% note warning %}
 注意！Next仓库已经从[iissnan/hexo-theme-next](https://github.com/iissnan/hexo-theme-next)转移到了[theme-next/hexo-theme-next](https://github.com/theme-next/hexo-theme-next/releases)，并在新仓库中发布了 v6.x 版本，后续维护也将在新仓库中开展。如果你仍在使用旧仓库中的Next版本，可能会遇到各种Bug。
@@ -104,7 +104,7 @@ theme: next
 
 这个时候刷新浏览器页面并不会发生变化，需要重启服务器并刷新才能使主题生效。
 
-![Next 主题首页](http://yearito-1256884783.image.myqcloud.com/hexo-get-started/20181102095611506.png "Next 主题首页")
+![Next 主题首页](https://yearito-1256884783.image.myqcloud.com/hexo-get-started/20181102095611506.png "Next 主题首页")
 
 {% note info %}
 如果重启服务器仍无效，尝试使用 `hexo clean` 清除缓存
@@ -126,7 +126,7 @@ scheme: Muse
 
 本节通过修改站点配置文件完善了网站标题、网站描述、社交链接、站点版权信息、友情链接等，效果如下图：
 
-![站点概览](http://yearito-1256884783.image.myqcloud.com/hexo-get-started/Snipaste_2018-11-17_17-01-51.png "站点概览")
+![站点概览](https://yearito-1256884783.image.myqcloud.com/hexo-get-started/Snipaste_2018-11-17_17-01-51.png "站点概览")
 
 
 ## 完善站点基础信息
@@ -181,7 +181,7 @@ footer:  # 底部信息区
 
 更改后效果如下：
 
-![站点页脚](http://yearito-1256884783.image.myqcloud.com/hexo-get-started/20181102094925440.png "站点页脚")
+![站点页脚](https://yearito-1256884783.image.myqcloud.com/hexo-get-started/20181102094925440.png "站点页脚")
 
 ## 修改网站Favicon
 
@@ -204,7 +204,7 @@ links_icon: link
 links_title: 友情链接
 links_layout: inline
 links:
-  yearito: http://yearito.cn/
+  yearito: https://yearito.cn/
 ```
 
 ## 添加社交链接

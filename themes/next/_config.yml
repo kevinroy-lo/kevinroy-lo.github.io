@@ -1005,7 +1005,7 @@ tidio:
 # hotjar
 # see: https://www.hotjar.com/
 hotjar:
-  enable: true
+  enable: false
   siteID: 1617764
 
 # window woblle
