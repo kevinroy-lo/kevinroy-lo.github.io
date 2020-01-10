@@ -1,3 +1,11 @@
 # Introduction
 
-Welcome to my blog [yearito.cn](https://yearito.cn). Hope it's inspiring for you!
+## 注意由于使用了`grup`压缩，请使用如下命令部署网站。
+
+``` Js
+npx hexo clean
+npx hexo g
+npx hexo gulp
+
+hexo d
+```
