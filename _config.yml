@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Zoro's Blog
+title: Kevin's Blog
 subtitle:
 description: "🎄🎅 Where there is a will ,<br>🎈🎁 there is a way."
 keywords:
-author: Zoro
+author: Kevin Roy Lo
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://zoroblog.tk
+url: http://kevinroy.tk
 root: /
 permalink: posts/:title.html
 permalink_defaults:
@@ -81,7 +81,7 @@ deploy:
   - type: git
     repo: git@git.coding.net:lqyygtaps0312/zoroblog.git
     branch: master
-    message: zoro's blog.
+    message: Kevin's blog.
 #- type: baidu_url_submitter # 百度
 
 symbols_count_time:
