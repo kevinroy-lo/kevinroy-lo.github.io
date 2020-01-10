@@ -5,7 +5,7 @@
 ``` Js
 npx hexo clean
 npx hexo g
-npx hexo gulp
+npx gulp
 
-hexo d
+npx hexo deploy
 ```
