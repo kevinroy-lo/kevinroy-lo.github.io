@@ -5,6 +5,7 @@
 ``` Js
 npx hexo clean
 npx hexo g
+npx hexo douban -bm   // 生成豆瓣内容
 npx gulp
 
 npx hexo deploy

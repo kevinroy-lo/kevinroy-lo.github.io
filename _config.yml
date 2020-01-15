@@ -79,7 +79,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   - type: git
-    repo: git@git.coding.net:lqyygtaps0312/zoroblog.git
+    repo: git@e.coding.net:kevinroy/zoroblog.git
     branch: master
     message: Kevin's blog.
   # - type: git
@@ -155,17 +155,17 @@ live2d:
     opacityDefault: 0.7 # 默认透明度
 
 douban:
-  user:
+  user: 209316821
   builtin: false
   book:
     title: "我的书单"
-    quote:
+    quote: "书读百遍，其义自见；非淡泊无以明志，非宁静无以致远。"
   movie:
     title: "我的电影"
-    quote:
-  game:
-    title: "我的游戏"
-    quote:
+    quote: "一部电影，一段人生。"
+  # game:
+  #   title: "我的游戏"
+  #   quote:
   timeout: 10000
 
 # 图片懒加载
