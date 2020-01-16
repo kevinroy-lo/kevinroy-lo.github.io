@@ -25,12 +25,13 @@ jobs:
 
       - name: 配置 Git 环境
         env:
-          ACTION_DEPLOY_KEY: ${{secrets.ACTION_DEPLOY_KEY}}
+          # ACTION_DEPLOY_KEY: ${{secrets.ACTION_DEPLOY_KEY}}
           SSH_KEY: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDE7o7JKfmc2AJ3QxyEHIjrXcqF2f3Bvh/mUMJnKiUn4jC/Ch7n8E+pu6+uR+3R31jSjTIdFM2PRBu2932t4fDZfGoEpURiQglvFcaAwust5NxKZjMcVXXv05eDH1W696U6/kWDxH9jaJz+bLD9fda2Vee+4TNTHqBqU1ezfifsL7/n8MZ5hA8vONq+o+DfgSfuBpmqnaPlHCRgteiV6QWBHgjUyBkBsY70vegS6nsWBvf6iN5oTdAubl/zz7xKKvZXg0ZCekt+hnMmTPKXWtCwHERuRq/KsCcOW3PoGMXfRaj0+dB3/LxYVBtlxyR+8mRWP+f1nTJN7xj9WVKmGTt/ luoguangrong0312@gmail.com"
         run: |
           mkdir -p ~/.ssh/
-          echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
+          echo "$SSH_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
+          cat ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global user.name "kevinroy"
           git config --global user.email "luoguangrong0312@gmail.com"
@@ -48,6 +49,5 @@ jobs:
       - name: 部署博客
         run: |
           rm -rf .deploy_git
-          echo "$SSH_KEY" > ~/.ssh/id_rsa
           hexo clean && hexo g && hexo douban -bm && gulp && hexo deploy
           rm ~/.ssh/id_rsa
