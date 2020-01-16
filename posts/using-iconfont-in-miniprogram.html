@@ -1,0 +1,342 @@
+<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><link href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" rel="stylesheet" type="text/css"><link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"><link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.4.2"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.4.2"><link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"6.4.2",sidebar:{position:"left",display:"always",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,fastclick:!1,lazyload:!1,tabs:!0,motion:{enable:!0,async:!0,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"搜索文章内容",hits_empty:"无法找到相关结果: ${query}",hits_stats:"${time} ms 内匹配到 ${hits} 条结果"}}}</script><meta name="description" content="最近做小程序开发，本来是个私人的小项目，所以一开始都是从 iconfont 上下载png文件再用图片标签引入的，后来想实现图标的点击态变色，发现以前的方案太原始太落后，不好维护，还是得上矢量图形的引入方案。然后就开始尝试照搬Web中引入iconfont图标的解决方案，才发现事情并没有想象的这么简单。 小程序的环境和Web挺有几分相似，但又不是完全一样，所以iconfont推荐的三种方案并不都是可"><meta name="keywords" content="小程序"><meta property="og:type" content="article"><meta property="og:title" content="【转】如何在微信小程序中引用iconfont图标"><meta property="og:url" content="https://kevinroy.tk/posts/using-iconfont-in-miniprogram.html"><meta property="og:site_name" content="Kevin&#39;s Blog"><meta property="og:description" content="最近做小程序开发，本来是个私人的小项目，所以一开始都是从 iconfont 上下载png文件再用图片标签引入的，后来想实现图标的点击态变色，发现以前的方案太原始太落后，不好维护，还是得上矢量图形的引入方案。然后就开始尝试照搬Web中引入iconfont图标的解决方案，才发现事情并没有想象的这么简单。 小程序的环境和Web挺有几分相似，但又不是完全一样，所以iconfont推荐的三种方案并不都是可"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/thumbnails/women-with-coffee.jpg!thumbnail"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/font-class.png"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/test-font-class.png"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/icon-in-devtool.png"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/icon-in-phone.png"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/official-answer.jpg"><meta property="og:updated_time" content="2020-01-16T12:28:00.041Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="【转】如何在微信小程序中引用iconfont图标"><meta name="twitter:description" content="最近做小程序开发，本来是个私人的小项目，所以一开始都是从 iconfont 上下载png文件再用图片标签引入的，后来想实现图标的点击态变色，发现以前的方案太原始太落后，不好维护，还是得上矢量图形的引入方案。然后就开始尝试照搬Web中引入iconfont图标的解决方案，才发现事情并没有想象的这么简单。 小程序的环境和Web挺有几分相似，但又不是完全一样，所以iconfont推荐的三种方案并不都是可"><meta name="twitter:image" content="https://yearito-1256884783.image.myqcloud.com/thumbnails/women-with-coffee.jpg!thumbnail"><link rel="alternate" href="/atom.xml" title="Kevin's Blog" type="application/atom+xml"><link rel="canonical" href="https://kevinroy.tk/posts/using-iconfont-in-miniprogram.html"><script type="text/javascript" id="page.configurations">CONFIG.page={sidebar:""}</script><title>【转】如何在微信小程序中引用iconfont图标 | Kevin's Blog</title><noscript><style type="text/css">.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Kevin's Blog</span><span class="logo-line-after"><i></i></span></a></div></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-top"><a href="/top/" rel="section"><i class="menu-item-icon fa fa-fw fa-signal"></i><br>排行</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-tasks"></i><br>归档</a></li><li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i><br>读书</a></li><li class="menu-item menu-item-movies"><a href="/movies/" rel="section"><i class="menu-item-icon fa fa-fw fa-video-camera"></i><br>电影</a></li><li class="menu-item menu-item-bookmark"><a href="/bookmark/" rel="section"><i class="menu-item-icon fa fa-fw fa-bookmark"></i><br>书签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><div class="reading-progress-bar"></div><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://kevinroy.tk/posts/using-iconfont-in-miniprogram.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Kevin Roy Lo"><meta itemprop="description" content="🎄🎅 Where there is a will ,<br>🎈🎁 there is a way."><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Kevin's Blog"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">【转】如何在微信小程序中引用iconfont图标</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2019-01-29 17:04:08" itemprop="dateCreated datePublished" datetime="2019-01-29T17:04:08+00:00">2019-01-29</time></span><div class="post-symbolscount"> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span> <span class="post-meta-item-text">本文字数：</span> <span title="本文字数">6.1k</span></div></div></header><div class="post-body" itemprop="articleBody"><p><img src="https://yearito-1256884783.image.myqcloud.com/thumbnails/women-with-coffee.jpg!thumbnail" alt="题图" title="Photo by Mat Szulik"></p><p>最近做小程序开发，本来是个私人的小项目，所以一开始都是从 iconfont 上下载png文件再用图片标签引入的，后来想实现图标的点击态变色，发现以前的方案太原始太落后，不好维护，还是得上矢量图形的引入方案。然后就开始尝试照搬Web中引入iconfont图标的解决方案，才发现事情并没有想象的这么简单。</p><p>小程序的环境和Web挺有几分相似，但又不是完全一样，所以iconfont推荐的三种方案并不都是可行的，尝试的过程中一路走了不少坑，此文记录探索过程中的思考与感悟。</p><a id="more"></a><div class="note"><p>如果对 iconfont的三种图标引入方案不甚了解，可以移步前文查看：<a href="/posts/using-iconfont-in-webpage.html" title="Web 页面中引用 iconfont 图标">Web 页面中引用 iconfont 图标</a>。</p></div><p>iconfont 提供的三种方案中，Unicode和Font Class都是引入CSS样式通过自定义字体来实现的，Symbol是引入自定义脚本来实现的，我们先来测试一下Font Class方案的可行性。</p><h1 id="Font-Class-方案探索"><a href="#Font-Class-方案探索" class="headerlink" title="Font Class 方案探索"></a>Font Class 方案探索</h1><p>先考虑这样一个问题，能不能直接引入外部的CSS样式文件呢？</p><p>答案是不能，<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html" target="_blank" rel="noopener">官方给出的信息</a> 如下：</p><blockquote><p>使用@import语句可以导入外联样式表，@import后跟需要导入的外联样式表的相对路径，用;表示语句结束。</p></blockquote><p>也就是说，只能从<strong>本地</strong>导入<strong>WXSS格式</strong>的样式文件。</p><p>我们知道，小程序中的WXSS基本上就是Web中的CSS，支持大多数的CSS选择器和样式，那么我们就试试将Font Class的CSS代码直接拷贝到小程序的WXSS文件中看一下。</p><p>将Font Class的样式引用链接复制到浏览器中直接打开：</p><p><img src="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/font-class.png" alt="Font Class 引用链接" title="Font Class 引用链接"></p><p>在小程序目录下新建WXSS文件，将CSS代码复制进来：</p><figure class="highlight css"><figcaption><span>libs\style\iconfont.wxss</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;<span class="attribute">font-family</span>: <span class="string">"iconfont"</span>;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.eot?t=1548690018080'</span>); <span class="comment">/* IE9 */</span></span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.eot?t=1548690018080#iefix'</span>) <span class="built_in">format</span>(<span class="string">'embedded-opentype'</span>), <span class="comment">/* IE6-IE8 */</span></span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'data:application/x-font-woff2;charset=utf-8;base64,d09GMgAB......TB+KD1yrAQAAAA=='</span>) <span class="built_in">format</span>(<span class="string">'woff2'</span>), //内容太长有删减</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.woff?t=1548690018080'</span>) <span class="built_in">format</span>(<span class="string">'woff'</span>),</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.ttf?t=1548690018080'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>), <span class="comment">/* chrome, firefox, opera, Safari, Android, iOS 4.2+ */</span></span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.svg?t=1548690018080#iconfont'</span>) <span class="built_in">format</span>(<span class="string">'svg'</span>); <span class="comment">/* iOS 4.1- */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.iconfont</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"iconfont"</span> <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">  <span class="attribute">font-style</span>: normal;</span><br><span class="line">  <span class="attribute">-webkit-font-smoothing</span>: antialiased;</span><br><span class="line">  <span class="attribute">-moz-osx-font-smoothing</span>: grayscale;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-full-screen</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e616"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-love</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e71e"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-pause</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e615"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-playing</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e643"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-ring</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e601"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-help</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e609"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在根目录下的 <code>app.wxss</code> 文件中导入该文件：</p><figure class="highlight css"><figcaption><span>app.wxss</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">'libs/style/iconfont.wxss'</span>;</span><br></pre></td></tr></table></figure><p>在测试页面上插入引用标签：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont icon-playing"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont icon-pause"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont icon-voice"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont icon-full-screen"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure><p>在微信开发者工具中查看效果如下：</p><p><img src="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/test-font-class.png" alt="Font Class 方案效果" title="Font Class 方案效果"></p><div class="note info"><p>得到结论：Font Class方案可行，具体实现步骤如上。</p></div><p>此前在网上看到比较主流的说法是：小程序的WXSS文件中 <code>font-face</code> 的url不接受http地址作为参数，并给出了通过 <a href="https://transfonter.org" target="_blank" rel="noopener">transfonter</a> 将字体转为base64格式编码再引入的方案。</p><p>出于好奇，我就研究了一下这种说法。</p><p>当前iconfont的Font Class引用链接中是直接包含了字体的base64格式编码的，不需要再通过 transfonter 网站自行转换了，以上说法应该是基于旧版本的iconfont提出的。关于WXSS的 <code>font-face</code> 是否支持http地址作为字体源，我把 iconfont的 Unicode 引用代码复制到了小程序中：</p><figure class="highlight css"><figcaption><span>libs\style\iconfont.wxss</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">'iconfont'</span>;  </span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.eot'</span>);</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.eot?#iefix'</span>) <span class="built_in">format</span>(<span class="string">'embedded-opentype'</span>),</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.woff2'</span>) <span class="built_in">format</span>(<span class="string">'woff2'</span>),</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.woff'</span>) <span class="built_in">format</span>(<span class="string">'woff'</span>),</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>),</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.svg#iconfont'</span>) <span class="built_in">format</span>(<span class="string">'svg'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><div class="note info"><p>经过测试，发现在WXSS中通过url地址直接引入外部字体的方法是可行的，只是存放字体的服务器需要允许跨域。</p></div><h1 id="Symbol-方案探索"><a href="#Symbol-方案探索" class="headerlink" title="Symbol 方案探索"></a>Symbol 方案探索</h1><p>那么iconfont推荐的Symbol方案是否可行呢？</p><p>该方案需要在页面中引入JS脚本，所以需要先考虑这样一个问题：能否在小程序中直接引入外部JS脚本？</p><div class="note info"><p>答案是不能，小程序只支持通过 require 的方式引入<strong>本地</strong>的JS脚本。就算把Symbol的脚本下载到本地引入也没有意义，因为小程序中压根就不存在window顶级对象，也没有HTML中那一套DOM操作接口，更别提通过JS脚本插入节点元素了。所以这条路是彻底走不通的。</p></div><h1 id="真机环境下原生组件不显示图标"><a href="#真机环境下原生组件不显示图标" class="headerlink" title="真机环境下原生组件不显示图标"></a>真机环境下原生组件不显示图标</h1><p>我曾以为只是这样简单就可以完美解决小程序引入iconfont图标的问题了，我开开心心的在 <code>live-player</code> 组件中引用入 <code>cover-view</code> 组件和iconfont 图标来控制播放器行为：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">live-player</span></span></span><br><span class="line"><span class="tag">  <span class="attr">id</span>=<span class="string">"live"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">class</span>=<span class="string">"live-player"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">src</span>=<span class="string">"&#123;&#123;liveStream&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">mode</span>=<span class="string">"live"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">muted</span>=<span class="string">"&#123;&#123;muted&#125;&#125;"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">autoplay</span></span></span><br><span class="line"><span class="tag">  <span class="attr">bindstatechange</span>=<span class="string">"statechange"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">binderror</span>=<span class="string">"error"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">bindtap</span>=<span class="string">"onTapScreen"</span></span></span><br><span class="line"><span class="tag">&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"tool"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"left-section"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont &#123;&#123;playing ? 'icon-playing' : 'icon-pause'&#125;&#125;"</span> <span class="attr">bindtap</span>=<span class="string">"togglePlaying"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont icon-refresh"</span> <span class="attr">bindtap</span>=<span class="string">"refreshLive"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"right-section"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"switch-line"</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;liveStream&#125;&#125;"</span> <span class="attr">wx:key</span>=<span class="string">"unique"</span>&gt;</span>&#123;&#123;item.name&#125;&#125;<span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont &#123;&#123;muted ? 'icon-mute' : 'icon-voice'&#125;&#125;"</span> <span class="attr">bindtap</span>=<span class="string">"toggleVoice"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont icon-full-screen"</span> <span class="attr">bindtap</span>=<span class="string">"toggleFullScreen"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">live-player</span>&gt;</span></span><br></pre></td></tr></table></figure><p>微信开发者工具中显示如下：</p><p><img src="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/icon-in-devtool.png" alt="微信开发者工具中的效果" title="微信开发者工具中的效果"></p><p>当我在手机上预览的时候就傻了，图标居然不显示了：</p><p><img src="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/icon-in-phone.png" alt="真机调试的效果" title="真机调试的效果"></p><p>测试了一下真机环境下的普通视图容器中是可以显示icon的，所以首先排除字体引入失败的可能性。</p><p>查看官方文档的时候注意到了官方的 <a href="https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html" target="_blank" rel="noopener">友情提示</a>：</p><blockquote><p>在工具上，原生组件是用web组件模拟的，因此很多情况并不能很好的还原真机的表现，建议开发者在使用到原生组件时尽量在真机上进行调试。</p></blockquote><p>看来是 live-player 原生组件的问题。</p><p>官方对于这一块内容的 <a href="https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html" target="_blank" rel="noopener">相关描述</a> 如下：</p><blockquote><p>原生组件是脱离在 WebView 渲染流程外的，层级是最高的，无视其他元素的 z-index 属性。小程序为了解决原生组件层级最高的限制，专门提供了 cover-view 和 cover-image 组件，可以覆盖在部分原生组件上面。</p></blockquote><p>于是我尝试将标签 <code>&lt;i /&gt;</code> 改为 <code>&lt;cover-view /&gt;</code> 或 <code>&lt;button /&gt;</code>，依然没解决问题，真机下还是不显示图标。</p><p>然后我开始在社区寻找解决方案，发现还是有不少人遇到了相同的问题的。</p><p>其中有人提到是否是 cover-view 不支持伪元素，验证了一下真机环境下确实不显示 <code>:before</code> 伪元素中的 <code>content</code> 内容，看来开发者工具中对伪元素的支持确实是web组件模拟原生组件留下的副产物。</p><h1 id="Unicode-方案探索"><a href="#Unicode-方案探索" class="headerlink" title="Unicode 方案探索"></a>Unicode 方案探索</h1><p>为了绕开这个坑，我又尝试使用iconfont的 Unicode方案，直接在 cover-view 标签内书写 html 转义字符：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">cover-view</span> <span class="attr">class</span>=<span class="string">"icon"</span>&gt;</span>&amp;#xe616;<span class="tag">&lt;/<span class="name">cover-view</span>&gt;</span></span><br></pre></td></tr></table></figure><p>结果转义字符直接被原封不动的显示出来了，并没有转成图标字体。</p><p>经查，小程序中不支持直接使用转义字符，只有 text 标签可以通过设置 decode 属性后来支持转义字符，并且可以解析的转义字符也及其有限：</p><blockquote><p>decode可以解析的有 <code>&amp;nbsp;</code> <code>&amp;lt;</code> <code>&amp;gt;</code> <code>&amp;amp;</code> <code>&amp;apos;</code> <code>&amp;ensp;</code> <code>&amp;emsp;</code></p></blockquote><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 转义成功 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">text</span> <span class="attr">decode</span>=<span class="string">"true"</span>&gt;</span>&amp;lt;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 转义失败，原样输出 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">text</span> <span class="attr">decode</span>=<span class="string">"true"</span>&gt;</span>&amp;#xe616;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br></pre></td></tr></table></figure><div class="note info"><p>因此，由于小程序不支持转义字符，所以Unicode的方案也宣告失败。</p></div><p>最后，在一篇社区讨论贴 <a href="https://developers.weixin.qq.com/community/develop/doc/000a60f7d58a982f08d7ddfc456000" target="_blank" rel="noopener">cover-view中使用iconfont图标无法显示</a> 中看到了一个官方的回答：</p><p><img src="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-miniprogram/official-answer.jpg" alt="官方回答" title="官方回答"></p><p>看来原生组件中的图标引入方案除了 cover-image 标签也别无他法了。</p><h1 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h1><p>本文探索了iconfont三种引用方案在小程序中的实现可行性：</p><ul><li>小程序不支持转义字符，所以Unicode方案宣告失败。</li><li>小程序中可以通过 <code>font-face</code> 引入外部字体，所以<strong>Font Class方案可行</strong>。</li><li>小程序不支持引入外部JS脚本，且没有DOM接口，所以Symbol方案宣告失败。</li></ul><p>虽然 Font Class 方案可以在小程序中引入iconfont图标，但是无法应用到原生组件中，原生组件中的图标只能以图像的形式引入。</p><div class="reference-linking">参考链接</div><ul><li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxss.html" target="_blank" rel="noopener">官方文档 | WXSS · 小程序</a></li><li><a href="https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html" target="_blank" rel="noopener">官方文档 | 原生组件说明 · 小程序</a></li><li><a href="https://developers.weixin.qq.com/community/develop/doc/000084d5c9c078c79be6427b156400" target="_blank" rel="noopener">微信开放社区 | cover-view中使用iconfont上的图标，真机上不显示问题</a></li><li><a href="https://developers.weixin.qq.com/community/develop/doc/000a60f7d58a982f08d7ddfc456000" target="_blank" rel="noopener">微信开放社区 | cover-view中使用iconfont图标无法显示</a></li></ul></div><div><div><div style="text-align:center;color:#bfbfbf;font-size:16px"> <span>-------- 本文结束</span><i class="fa fa-paw"></i> <span>感谢阅读 --------</span></div></div></div><div><div style="padding:10px 0;margin:20px auto;width:90%;text-align:center"><div></div> <button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'> <span>打赏</span></button><div id="QR" style="display:none"><div id="wechat" style="display:inline-block"> <img id="wechat_qr" src="/images/wechatpay.png" alt="Kevin Roy Lo 微信支付"><p>微信支付</p></div><div id="alipay" style="display:inline-block"> <img id="alipay_qr" src="/images/alipay.jpg" alt="Kevin Roy Lo 支付宝"><p>支付宝</p></div></div></div></div><div><script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><ul class="post-copyright"><li> <strong>本文标题：</strong> 【转】如何在微信小程序中引用iconfont图标</li><li class="post-copyright-author"> <strong>本文作者：</strong> Kevin Roy Lo</li><li> <strong>创建时间：</strong> 2019年01月29日 - 17时01分</li><li> <strong>修改时间：</strong> 2020年01月16日 - 12时01分</li><li class="post-copyright-link"> <strong>引用链接：</strong> <a href="https://kevinroy.tk/posts/using-iconfont-in-miniprogram.html" title="【转】如何在微信小程序中引用iconfont图标">https://kevinroy.tk/posts/using-iconfont-in-miniprogram.html</a><span class="copy-path" title="点击复制引用链接"><i style="cursor:pointer" class="fa fa-clipboard" data-clipboard-text="[Kevin Roy Lo's Blog | 【转】如何在微信小程序中引用iconfont图标](https://kevinroy.tk/posts/using-iconfont-in-miniprogram.html)" aria-label="复制成功"></i></span></li><li class="post-copyright-license"> <strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li></ul><script>var clipboard=new ClipboardJS(".fa-clipboard");clipboard.on("success",function(e){var a=document.createElement("div");a.innerHTML='<i class="fa fa-check-circle message-icon"></i><span class="message-content">'+e.trigger.getAttribute("aria-label")+"</span>",swal({content:a,className:"copy-success-message",timer:1e3,button:!1})})</script></div><footer class="post-footer"><div class="post-tags"><a href="/tags/小程序/" rel="tag"><i class="fa fa-tags"></i> 小程序</a></div><div class="post-widgets"><div class="wp_rating"><div id="wpac-rating"></div></div></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/posts/minority-websites.html" rel="prev" title="【转】一些小众但很有意思的网站"><i class="fa fa-chevron-left"></i> 【转】一些小众但很有意思的网站</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/posts/using-iconfont-in-webpage.html" rel="next" title="【转】Web页面中引用iconfont图标">【转】Web页面中引用iconfont图标<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <a href="/"><img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Kevin Roy Lo"></a><p class="site-author-name" itemprop="name">Kevin Roy Lo</p><p class="site-description motion-element" itemprop="description">🎄🎅 Where there is a will ,<br>🎈🎁 there is a way.</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">14</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">7</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">9</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/kevinroy-lo" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:luoguangrong0312@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span></div><div class="cc-license motion-element" itemprop="license"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-link"></i> 友情链接</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"> <a href="https://cat.kevinroy.tk/" title="Kevin's Home" target="_blank">Kevin's Home</a></li><li class="links-of-blogroll-item"> <a href="https://cat.kevinroy.tk/video/" title="Kevin's Movie Station" target="_blank">Kevin's Movie Station</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Font-Class-方案探索"><span class="nav-text">Font Class 方案探索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Symbol-方案探索"><span class="nav-text">Symbol 方案探索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#真机环境下原生组件不显示图标"><span class="nav-text">真机环境下原生组件不显示图标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Unicode-方案探索"><span class="nav-text">Unicode 方案探索</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结束语"><span class="nav-text">结束语</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span><span class="with-love" id="animate"><i class="fa fa-heart"></i></span> <span class="author" itemprop="copyrightHolder">Kevin Roy Lo</span></div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span class="site-uv">我的第<span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 位朋友，</span> <span class="site-pv">历经<span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次回眸才与你相遇</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.ui.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script><script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script><script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('body');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script><script type="text/javascript">wpac_init=window.wpac_init||[],wpac_init.push({widget:"Rating",id:22405,el:"wpac-rating",color:"fadb14"}),function(){if(!("WIDGETPACK_LOADED"in window)){WIDGETPACK_LOADED=!0;var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//embed.widgetpack.com/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t.nextSibling)}}()</script><script src="//cdn.jsdelivr.net/npm/pangu@3.3.0/dist/browser/pangu.min.js"></script><script type="text/javascript">pangu.spacingPage()</script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><script>$(document).ready(function(){$(".header-inner").animate({padding:"25px 0 25px"},1e3)})</script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script><script>
+    function timer() {
+      var ages = moment.preciseDiff(moment(),moment(20181001,"YYYYMMDD"));
+      ages = ages.replace(/years?/, "年");
+      ages = ages.replace(/months?/, "月");
+      ages = ages.replace(/days?/, "天");
+      ages = ages.replace(/hours?/, "小时");
+      ages = ages.replace(/minutes?/, "分");
+      ages = ages.replace(/seconds?/, "秒");
+      ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+      div.innerHTML = `我已在此等候你 ${ages}`;
+    }
+    var div = document.createElement("div");
+
+    //插入到copyright之后
+    var copyright = document.querySelector(".copyright");
+    document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+
+    //插入到卜蒜子之后
+    //document.querySelector(".footer-inner").appendChild(div);
+
+    timer();
+    setInterval("timer()",1000)
+  </script><script src="/js/wobblewindow.js"></script><script>768<window.innerWidth&&$(document).ready(function(){$("#header").wobbleWindow({radius:50,movementTop:!1,movementLeft:!1,movementRight:!1,debug:!1}),$("#footer").wobbleWindow({radius:50,movementBottom:!1,movementLeft:!1,movementRight:!1,position:"absolute",debug:!1})})</script><script async src="https://script-1256884783.file.myqcloud.com/cursor/fireworks.js"></script><script src="https://script-1256884783.file.myqcloud.com/activate-power-mode.min.js"></script><script>POWERMODE.colorful=!0,POWERMODE.shake=!1,document.body.addEventListener("input",POWERMODE)</script><script>var titleTime,OriginTitile=document.title;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="(つェ⊂)给你送🎁来咯~"+OriginTitile,clearTimeout(titleTime)):(document.title="(*´∇｀*)圣诞节还没到呢💨"+OriginTitile,titleTime=setTimeout(function(){document.title=OriginTitile},2e3))})</script></body></html>

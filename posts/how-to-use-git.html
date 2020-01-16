@@ -1,0 +1,342 @@
+<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><link href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" rel="stylesheet" type="text/css"><link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"><link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.4.2"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.4.2"><link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"6.4.2",sidebar:{position:"left",display:"always",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,fastclick:!1,lazyload:!1,tabs:!0,motion:{enable:!0,async:!0,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"搜索文章内容",hits_empty:"无法找到相关结果: ${query}",hits_stats:"${time} ms 内匹配到 ${hits} 条结果"}}}</script><meta name="description" content="序公司一直用 SVN，但是平常自己看第三方源码的，或者自己博客都会用到 Git，有时候经常遇到一些问题。比如现在的博客，由于这个版本的 hexo 已经不维护了，但是我又不想切换到最新版本的 hexo(自定义配置什么的都需要重新改，比较麻烦)，于是升级到 hexo 老版本的最新版，但是由于很久没维护，遇到了一些 Aweshme Icon 的问题，找了很久的源码也没有解决，但是重新拉了一下老版本，又发"><meta name="keywords" content="Git"><meta property="og:type" content="article"><meta property="og:title" content="重学Git"><meta property="og:url" content="https://kevinroy.tk/posts/how-to-use-git.html"><meta property="og:site_name" content="Kevin&#39;s Blog"><meta property="og:description" content="序公司一直用 SVN，但是平常自己看第三方源码的，或者自己博客都会用到 Git，有时候经常遇到一些问题。比如现在的博客，由于这个版本的 hexo 已经不维护了，但是我又不想切换到最新版本的 hexo(自定义配置什么的都需要重新改，比较麻烦)，于是升级到 hexo 老版本的最新版，但是由于很久没维护，遇到了一些 Aweshme Icon 的问题，找了很久的源码也没有解决，但是重新拉了一下老版本，又发"><meta property="og:locale" content="zh-CN"><meta property="og:updated_time" content="2020-01-16T12:28:00.041Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="重学Git"><meta name="twitter:description" content="序公司一直用 SVN，但是平常自己看第三方源码的，或者自己博客都会用到 Git，有时候经常遇到一些问题。比如现在的博客，由于这个版本的 hexo 已经不维护了，但是我又不想切换到最新版本的 hexo(自定义配置什么的都需要重新改，比较麻烦)，于是升级到 hexo 老版本的最新版，但是由于很久没维护，遇到了一些 Aweshme Icon 的问题，找了很久的源码也没有解决，但是重新拉了一下老版本，又发"><link rel="alternate" href="/atom.xml" title="Kevin's Blog" type="application/atom+xml"><link rel="canonical" href="https://kevinroy.tk/posts/how-to-use-git.html"><script type="text/javascript" id="page.configurations">CONFIG.page={sidebar:""}</script><title>重学Git | Kevin's Blog</title><noscript><style type="text/css">.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Kevin's Blog</span><span class="logo-line-after"><i></i></span></a></div></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-top"><a href="/top/" rel="section"><i class="menu-item-icon fa fa-fw fa-signal"></i><br>排行</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-tasks"></i><br>归档</a></li><li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i><br>读书</a></li><li class="menu-item menu-item-movies"><a href="/movies/" rel="section"><i class="menu-item-icon fa fa-fw fa-video-camera"></i><br>电影</a></li><li class="menu-item menu-item-bookmark"><a href="/bookmark/" rel="section"><i class="menu-item-icon fa fa-fw fa-bookmark"></i><br>书签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><div class="reading-progress-bar"></div><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://kevinroy.tk/posts/how-to-use-git.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Kevin Roy Lo"><meta itemprop="description" content="🎄🎅 Where there is a will ,<br>🎈🎁 there is a way."><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Kevin's Blog"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">重学Git</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2020-01-16 12:28:00" itemprop="dateCreated datePublished" datetime="2020-01-16T12:28:00+00:00">2020-01-16</time></span><div class="post-symbolscount"> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span> <span class="post-meta-item-text">本文字数：</span> <span title="本文字数">12k</span></div></div></header><div class="post-body" itemprop="articleBody"><h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><p>公司一直用 SVN，但是平常自己看第三方源码的，或者自己博客都会用到 Git，有时候经常遇到一些问题。比如现在的博客，由于这个版本的 hexo 已经不维护了，但是我又不想切换到最新版本的 hexo(自定义配置什么的都需要重新改，比较麻烦)，于是升级到 hexo 老版本的最新版，但是由于很久没维护，遇到了一些 Aweshme Icon 的问题，找了很久的源码也没有解决，但是重新拉了一下老版本，又发现是好的。于是遇到了一些 merge，版本回退啥的，索性就好好复习一下 Git 的用法吧~</p><a id="more"></a><h2 id="常用流程"><a href="#常用流程" class="headerlink" title="常用流程"></a>常用流程</h2><h3 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h3><h4 id="工作区和暂存区之间"><a href="#工作区和暂存区之间" class="headerlink" title="工作区和暂存区之间"></a>工作区和暂存区之间</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure><div class="note danger"><p>意思就是，把 readme.txt 文件在工作区的修改全部撤销，这里有两种情况：一种是 readme.txt 自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；一种是 readme.txt 已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p><p>注意要加– 。git-checkout - Switch branches or restore working tree filesgit checkout [-q][-f] [-m][<branch>]</branch></p></div><h4 id="暂存区和版本库之间"><a href="#暂存区和版本库之间" class="headerlink" title="暂存区和版本库之间"></a>暂存区和版本库之间</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD &lt;file&gt;</span><br></pre></td></tr></table></figure><p>把暂存区的内容回退到版本库中的内容&lt;舍弃暂存区的修改，回退到 HEAD 的内容&gt;。</p><div class="note danger"><p>// 注意和版本回退之间的区别，有无–hard 选项。git reset –hard HEAD^</p></div><h3 id="add-暂存区"><a href="#add-暂存区" class="headerlink" title="add 暂存区"></a>add 暂存区</h3><p>文件保存成二进制对象以后，还需要通知 Git 哪些文件发生了变动。所有变动的文件，Git 都记录在一个区域，叫做”暂存区”（英文叫做 index 或者 stage）。等到变动告一段落，再统一把暂存区里面的文件写入正式的版本历史。</p><h3 id="commit-的概念"><a href="#commit-的概念" class="headerlink" title="commit 的概念"></a>commit 的概念</h3><p>暂存区保留本次变动的文件信息，等到修改了差不多了，就要把这些信息写入历史，这就相当于生成了当前项目的一个快照（snapshot）。项目的历史就是由不同时点的快照构成。Git 可以将项目恢复到任意一个快照。快照在 Git 里面有一个专门名词，叫做 commit，生成快照又称为完成一次提交。</p><p>所谓快照，就是保存当前的目录结构，以及每个文件对应的二进制对象。上一个操作，目录结构已经保存好了，现在需要将这个目录结构与一些元数据一起写入版本历史。</p><p>保存进暂存区以后，只要 git commit 一个命令，就同时提交目录结构和说明，生成快照。</p><p>git checkout 命令用于切换到某个快照。</p><p>git checkout c9053865e9dff393fd2f7a92a18f9bd7f2caa7fa git show 命令用于展示某个快照的所有代码变动。</p><h3 id="branch-的概念"><a href="#branch-的概念" class="headerlink" title="branch 的概念"></a>branch 的概念</h3><p>git log 命令只显示当前分支的变动，虽然我们前面已经提交了快照，但是还没有记录这个快照属于哪个分支。 所谓分支（branch）就是指向某个快照的指针，分支名就是指针名。哈希值是无法记忆的，分支使得用户可以为快照起别名。而且，分支会自动更新，如果当前分支有<strong>新的快照，指针就会自动指向它</strong>。比如，master 分支就是有一个叫做 master 指针，它指向的快照就是 master 分支的当前快照。</p><p>Git 有一个特殊指针 HEAD， 总是指向当前分支的最近一次快照。另外，Git 还提供简写方式，HEAD^指向 HEAD 的前一个快照（父节点），HEAD~6 则是 HEAD 之前的第 6 个快照。</p><p>每一个分支指针都是一个文本文件，保存在.git/refs/heads/目录，该文件的内容就是它所指向的快照的二进制对象名（哈希值）。</p><p>git log 的运行过程是这样的：</p><ol><li>查找 HEAD 指针对应的分支，本例是 master</li><li>找到 master 指针指向的快照，本例是 785f188674ef3c6ddc5b516307884e1d551f53ca</li><li>找到父节点（前一个快照）c9053865e9dff393fd2f7a92a18f9bd7f2caa7fa</li><li>以此类推，显示当前分支的所有快照</li></ol><p>前面说过，分支指针是动态的。原因在于，下面三个命令会自动改写分支指针。</p><ol><li>git commit：当前分支指针移向新创建的快照。</li><li>git pull：当前分支与远程分支合并后，指针指向新创建的快照。</li><li>git reset [commit_sha]：当前分支指针重置为指定快照。</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">git init // 初始化一个Git项目</span><br><span class="line"></span><br><span class="line">// 修改</span><br><span class="line">git add // 添加版本管理的文件，修改的文件将保存在暂存区(添加的也是)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。</span><br><span class="line">场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD &lt;file&gt;，就回到了场景1，第二步按场景1操作。</span><br><span class="line"></span><br><span class="line">git restore --staged &lt;file&gt; // 撤销提交到暂存区的内容</span><br><span class="line"></span><br><span class="line">git commit &lt;file&gt; // 将数据提交到历史中(打包目录树，数据等)，并将HEAD指针指向新的目录</span><br><span class="line">git reset --hard HEAD^ // 将HEAD指针回退到上一个节点(父节点)，HEAD~5，表示回退到父5个节点</span><br><span class="line">git reset --hard 203a  // 也可以指定commit id 的前几位。</span><br></pre></td></tr></table></figure><h3 id="Git-init"><a href="#Git-init" class="headerlink" title="Git init"></a>Git init</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">usage: git init [-q | --quiet] [--bare] [--template=&lt;template-directory&gt;] [--shared[=&lt;permissions&gt;]] [&lt;directory&gt;]</span><br><span class="line"></span><br><span class="line">    --template &lt;template-directory&gt; :  directory from <span class="built_in">which</span> templates will be used</span><br><span class="line">    --bare                create a bare repository</span><br><span class="line">    --shared[=&lt;permissions&gt;]</span><br><span class="line">                          specify that the git repository is to be shared amongst several users</span><br><span class="line">    -q, --quiet           be quiet</span><br><span class="line">    --separate-git-dir &lt;gitdir&gt;</span><br><span class="line">                          separate git dir from working tree</span><br></pre></td></tr></table></figure><h3 id="Git-status"><a href="#Git-status" class="headerlink" title="Git status"></a>Git status</h3><p>相当于</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git ls-files --stage</span><br><span class="line">100644 3b18e512dba79e4c8300dd08aeb37f8e728b8dad 0   test.txt</span><br></pre></td></tr></table></figure><p>上面代码表示，暂存区现在只有一个文件 test.txt，以及它的二进制对象名和权限。知道了二进制对象名，就可以在.git/objects 子目录里面读出这个文件的内容。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">usage: git status [&lt;options&gt;][--] &lt;pathspec&gt;...</span><br><span class="line">-v, --verbose be verbose</span><br><span class="line">-s, --short show status concisely // 简约的形式展示（没有多余提示）</span><br><span class="line">-b, --branch show branch information //分支信息</span><br><span class="line">--show-stash show stash information</span><br><span class="line">--ahead-behind compute full ahead/behind values</span><br><span class="line">--porcelain[=&lt;version&gt;]</span><br><span class="line">machine-readable output</span><br><span class="line">--long show status <span class="keyword">in</span> long format (default)</span><br><span class="line">-z, --null terminate entries with NUL</span><br><span class="line">-u, --untracked-files[=&lt;mode&gt;]</span><br><span class="line">show untracked files, optional modes: all, normal, no. (Default: all)</span><br><span class="line">--ignored[=&lt;mode&gt;] show ignored files, optional modes: traditional, matching, no. (Default: traditional)</span><br><span class="line">--ignore-submodules[=&lt;when&gt;]</span><br><span class="line">ignore changes to submodules, optional when: all, dirty, untracked. (Default: all)</span><br><span class="line">--column[=&lt;style&gt;] list untracked files <span class="keyword">in</span> columns</span><br><span class="line">--no-renames <span class="keyword">do</span> not detect renames</span><br><span class="line">-M, --find-renames[=&lt;n&gt;]</span><br><span class="line">detect renames, optionally <span class="built_in">set</span> similarity index</span><br><span class="line">--show-ignored-directory</span><br><span class="line">(DEPRECATED: use --ignore=matching instead) Only show directories that match an ignore pattern name.</span><br><span class="line">--no-lock-index (DEPRECATED: use `git --no-optional-locks status` instead) Do not lock the index</span><br></pre></td></tr></table></figure><h3 id="Git-add"><a href="#Git-add" class="headerlink" title="Git add"></a>Git add</h3><div class="note info"><p>相当于 git hash-object 命令，把 test.txt 的当前内容压缩成二进制文件，存入 Git。压缩后的二进制文件，称为一个 Git 对象，保存在.git/objects 目录。这个命令还会计算当前内容的 SHA1 哈希值（长度 40 的字符串），作为该对象的文件名。子目录，目录名是哈希值的前 2 个字符，</p></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">usage: git add [&lt;options&gt;] [--] &lt;pathspec&gt;...</span><br><span class="line"></span><br><span class="line">    -n, --dry-run         dry run</span><br><span class="line">    -v, --verbose         be verbose</span><br><span class="line"></span><br><span class="line">    -i, --interactive     interactive picking</span><br><span class="line">    -p, --patch[=&lt;patch-mode&gt;]</span><br><span class="line">                          select hunks interactively</span><br><span class="line">    -e, --edit            edit current diff and apply</span><br><span class="line">    -f, --force           allow adding otherwise ignored files</span><br><span class="line">    -u, --update          update tracked files</span><br><span class="line">    --renormalize         renormalize EOL of tracked files (implies -u)</span><br><span class="line">    -N, --intent-to-add   record only the fact that the path will be added later</span><br><span class="line">    -A, --all             add changes from all tracked and untracked files</span><br><span class="line">    --ignore-removal      ignore paths removed <span class="keyword">in</span> the working tree (same as --no-all)</span><br><span class="line">    --refresh             don<span class="string">'t add, only refresh the index</span></span><br><span class="line"><span class="string">    --ignore-errors       just skip files which cannot be added because of errors</span></span><br><span class="line"><span class="string">    --ignore-missing      check if - even missing - files are ignored in dry run</span></span><br><span class="line"><span class="string">    --chmod (+|-)x        override the executable bit of the listed files</span></span><br></pre></td></tr></table></figure><h3 id="Git-diff-diff-–git"><a href="#Git-diff-diff-–git" class="headerlink" title="Git diff (diff –git)"></a>Git diff (diff –git)</h3><blockquote class="blockquote-center"><p>Show changes between commits, commit and working tree, et</p><p>git diff 比较的是工作目录中<strong>当前文件和暂存区域快照</strong>之间的差异， 也就是修改之后还没有暂存起来的变化内容； git diff –cached 比较的是<strong>已暂存的将要添加到下次提交里的内容</strong>和已经提交的内容之间的差异。</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">Usage: diff [OPTION]... FILES</span><br><span class="line">Compare FILES line by line.</span><br><span class="line"></span><br><span class="line">Mandatory arguments to long options are mandatory <span class="keyword">for</span> short options too.</span><br><span class="line">      --normal                  output a normal diff (the default)</span><br><span class="line">  -q, --brief                   report only when files differ</span><br><span class="line">  -s, --report-identical-files  report when two files are the same</span><br><span class="line">  -c, -C NUM, --context[=NUM]   output NUM (default 3) lines of copied context</span><br><span class="line">  -u, -U NUM, --unified[=NUM]   output NUM (default 3) lines of unified context</span><br><span class="line">  -e, --ed                      output an ed script</span><br><span class="line">  -n, --rcs                     output an RCS format diff</span><br><span class="line">  -y, --side-by-side            output <span class="keyword">in</span> two columns</span><br><span class="line">  -W, --width=NUM               output at most NUM (default 130) <span class="built_in">print</span> columns</span><br><span class="line">      --left-column             output only the left column of common lines</span><br><span class="line">      --suppress-common-lines   <span class="keyword">do</span> not output common lines</span><br><span class="line"></span><br><span class="line">  -p, --show-c-function         show <span class="built_in">which</span> C <span class="keyword">function</span> each change is <span class="keyword">in</span></span><br><span class="line">  -F, --show-function-line=RE   show the most recent line matching RE</span><br><span class="line">      --label LABEL             use LABEL instead of file name and timestamp</span><br><span class="line">                                  (can be repeated)</span><br><span class="line"></span><br><span class="line">  -t, --expand-tabs             expand tabs to spaces <span class="keyword">in</span> output</span><br><span class="line">  -T, --initial-tab             make tabs line up by prepending a tab</span><br><span class="line">      --tabsize=NUM             tab stops every NUM (default 8) <span class="built_in">print</span> columns</span><br><span class="line">      --suppress-blank-empty    suppress space or tab before empty output lines</span><br><span class="line">  -l, --paginate                pass output through <span class="string">'pr'</span> to paginate it</span><br><span class="line"></span><br><span class="line">  -r, --recursive                 recursively compare any subdirectories found</span><br><span class="line">      --no-dereference            don<span class="string">'t follow symbolic links</span></span><br><span class="line"><span class="string">  -N, --new-file                  treat absent files as empty</span></span><br><span class="line"><span class="string">      --unidirectional-new-file   treat absent first files as empty</span></span><br><span class="line"><span class="string">      --ignore-file-name-case     ignore case when comparing file names</span></span><br><span class="line"><span class="string">      --no-ignore-file-name-case  consider case when comparing file names</span></span><br><span class="line"><span class="string">  -x, --exclude=PAT               exclude files that match PAT</span></span><br><span class="line"><span class="string">  -X, --exclude-from=FILE         exclude files that match any pattern in FILE</span></span><br><span class="line"><span class="string">  -S, --starting-file=FILE        start with FILE when comparing directories</span></span><br><span class="line"><span class="string">      --from-file=FILE1           compare FILE1 to all operands;</span></span><br><span class="line"><span class="string">                                    FILE1 can be a directory</span></span><br><span class="line"><span class="string">      --to-file=FILE2             compare all operands to FILE2;</span></span><br><span class="line"><span class="string">                                    FILE2 can be a directory</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  -i, --ignore-case               ignore case differences in file contents</span></span><br><span class="line"><span class="string">  -E, --ignore-tab-expansion      ignore changes due to tab expansion</span></span><br><span class="line"><span class="string">  -Z, --ignore-trailing-space     ignore white space at line end</span></span><br><span class="line"><span class="string">  -b, --ignore-space-change       ignore changes in the amount of white space</span></span><br><span class="line"><span class="string">  -w, --ignore-all-space          ignore all white space</span></span><br><span class="line"><span class="string">  -B, --ignore-blank-lines        ignore changes where lines are all blank</span></span><br><span class="line"><span class="string">  -I, --ignore-matching-lines=RE  ignore changes where all lines match RE</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  -a, --text                      treat all files as text</span></span><br><span class="line"><span class="string">      --strip-trailing-cr         strip trailing carriage return on input</span></span><br><span class="line"><span class="string">      --binary                    read and write data in binary mode</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  -D, --ifdef=NAME                output merged file with '</span><span class="comment">#ifdef NAME' diffs</span></span><br><span class="line">      --GTYPE-group-format=GFMT   format GTYPE input groups with GFMT</span><br><span class="line">      --line-format=LFMT          format all input lines with LFMT</span><br><span class="line">      --LTYPE-line-format=LFMT    format LTYPE input lines with LFMT</span><br><span class="line">    These format options provide fine-grained control over the output</span><br><span class="line">      of diff, generalizing -D/--ifdef.</span><br><span class="line">    LTYPE is <span class="string">'old'</span>, <span class="string">'new'</span>, or <span class="string">'unchanged'</span>.  GTYPE is LTYPE or <span class="string">'changed'</span>.</span><br><span class="line">    GFMT (only) may contain:</span><br><span class="line">      %&lt;  lines from FILE1</span><br><span class="line">      %&gt;  lines from FILE2</span><br><span class="line">      %=  lines common to FILE1 and FILE2</span><br><span class="line">      %[-][WIDTH][.[PREC]]&#123;doxX&#125;LETTER  <span class="built_in">printf</span>-style spec <span class="keyword">for</span> LETTER</span><br><span class="line">        LETTERs are as follows <span class="keyword">for</span> new group, lower <span class="keyword">case</span> <span class="keyword">for</span> old group:</span><br><span class="line">          F  first line number</span><br><span class="line">          L  last line number</span><br><span class="line">          N  number of lines = L-F+1</span><br><span class="line">          E  F-1</span><br><span class="line">          M  L+1</span><br><span class="line">      %(A=B?T:E)  <span class="keyword">if</span> A equals B <span class="keyword">then</span> T <span class="keyword">else</span> E</span><br><span class="line">    LFMT (only) may contain:</span><br><span class="line">      %L  contents of line</span><br><span class="line">      %l  contents of line, excluding any trailing newline</span><br><span class="line">      %[-][WIDTH][.[PREC]]&#123;doxX&#125;n  <span class="built_in">printf</span>-style spec <span class="keyword">for</span> input line number</span><br><span class="line">    Both GFMT and LFMT may contain:</span><br><span class="line">      %%  %</span><br><span class="line">      %c<span class="string">'C'</span>  the single character C</span><br><span class="line">      %c<span class="string">'\OOO'</span>  the character with octal code OOO</span><br><span class="line">      C    the character C (other characters represent themselves)</span><br><span class="line"></span><br><span class="line">  -d, --minimal            try hard to find a smaller <span class="built_in">set</span> of changes</span><br><span class="line">      --horizon-lines=NUM  keep NUM lines of the common prefix and suffix</span><br><span class="line">      --speed-large-files  assume large files and many scattered small changes</span><br><span class="line">      --color[=WHEN]       colorize the output; WHEN can be <span class="string">'never'</span>, <span class="string">'always'</span>,</span><br><span class="line">                             or <span class="string">'auto'</span> (the default)</span><br><span class="line">      --palette=PALETTE    the colors to use when --color is active; PALETTE is</span><br><span class="line">                             a colon-separated list of terminfo capabilities</span><br><span class="line"></span><br><span class="line">      --<span class="built_in">help</span>               display this <span class="built_in">help</span> and <span class="built_in">exit</span></span><br><span class="line">  -v, --version            output version information and <span class="built_in">exit</span></span><br></pre></td></tr></table></figure><h3 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h3><blockquote class="blockquote-center"><p>git-checkout - Switch branches or restore working tree files</p><p>git reset 命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用 HEAD 时，表示最新的版本。</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git checkout [-q] [-f] [-m] [&lt;branch&gt;]</span><br><span class="line">git checkout [-q] [-f] [-m] --detach [&lt;branch&gt;]</span><br><span class="line">git checkout [-q] [-f] [-m] [--detach] &lt;commit&gt;</span><br><span class="line">git checkout [-q] [-f] [-m] [[-b|-B|--orphan] &lt;new_branch&gt;] [&lt;start_point&gt;]</span><br><span class="line">git checkout [-f|--ours|--theirs|-m|--conflict=&lt;style&gt;] [&lt;tree-ish&gt;] [--] &lt;paths&gt;…​</span><br><span class="line">git checkout [&lt;tree-ish&gt;] [--] &lt;pathspec&gt;…​</span><br><span class="line">git checkout (-p|--patch) [&lt;tree-ish&gt;] [--] [&lt;paths&gt;…​]</span><br></pre></td></tr></table></figure><h2 id="Git-远程库"><a href="#Git-远程库" class="headerlink" title="Git 远程库"></a>Git 远程库</h2><p>要关联一个远程库，使用命令 git remote add origin git@server-name:path/repo-name.git；</p><p>关联后，使用命令 git push -u origin master 第一次推送 master 分支的所有内容；</p><p>此后，每次本地提交后，只要有必要，就可以使用命令 git push origin master 推送最新修改；</p><h2 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 创建分支</span><br><span class="line">git branch dev</span><br><span class="line">// 切换分支</span><br><span class="line">git checkout dev == git switch master</span><br><span class="line">以上两条可以简写为：</span><br><span class="line"> git checkout -b dev == git switch -c dev (checkout由于和之间的用法迷惑)</span><br><span class="line"></span><br><span class="line">// 合并dev到当前分支</span><br><span class="line">git merge dev</span><br><span class="line">// 删除分支</span><br><span class="line">git branch -d dev</span><br></pre></td></tr></table></figure><div class="reference-linking">参考链接</div><p>-<a href="http://www.ruanyifeng.com/blog/2018/10/git-internals.html" target="_blank" rel="noopener">Git 原理入门</a> -<a href="https://www.liaoxuefeng.com/wiki/896043488029600" target="_blank" rel="noopener">廖雪峰的官方网站</a></p></div><div><div><div style="text-align:center;color:#bfbfbf;font-size:16px"> <span>-------- 本文结束</span><i class="fa fa-paw"></i> <span>感谢阅读 --------</span></div></div></div><div><script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><ul class="post-copyright"><li> <strong>本文标题：</strong> 重学Git</li><li class="post-copyright-author"> <strong>本文作者：</strong> Kevin Roy Lo</li><li> <strong>创建时间：</strong> 2020年01月16日 - 12时01分</li><li> <strong>修改时间：</strong> 2020年01月16日 - 12时01分</li><li class="post-copyright-link"> <strong>引用链接：</strong> <a href="https://kevinroy.tk/posts/how-to-use-git.html" title="重学Git">https://kevinroy.tk/posts/how-to-use-git.html</a><span class="copy-path" title="点击复制引用链接"><i style="cursor:pointer" class="fa fa-clipboard" data-clipboard-text="[Kevin Roy Lo's Blog | 重学Git](https://kevinroy.tk/posts/how-to-use-git.html)" aria-label="复制成功"></i></span></li><li class="post-copyright-license"> <strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li></ul><script>var clipboard=new ClipboardJS(".fa-clipboard");clipboard.on("success",function(e){var a=document.createElement("div");a.innerHTML='<i class="fa fa-check-circle message-icon"></i><span class="message-content">'+e.trigger.getAttribute("aria-label")+"</span>",swal({content:a,className:"copy-success-message",timer:1e3,button:!1})})</script></div><footer class="post-footer"><div class="post-tags"><a href="/tags/Git/" rel="tag"><i class="fa fa-tags"></i> Git</a></div><div class="post-widgets"><div class="wp_rating"><div id="wpac-rating"></div></div></div><div class="post-nav"><div class="post-nav-next post-nav-item"></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/posts/happy-2020.html" rel="next" title="2020年如约而至～">2020年如约而至～<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <a href="/"><img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Kevin Roy Lo"></a><p class="site-author-name" itemprop="name">Kevin Roy Lo</p><p class="site-description motion-element" itemprop="description">🎄🎅 Where there is a will ,<br>🎈🎁 there is a way.</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">14</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">7</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">9</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/kevinroy-lo" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:luoguangrong0312@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span></div><div class="cc-license motion-element" itemprop="license"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-link"></i> 友情链接</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"> <a href="https://cat.kevinroy.tk/" title="Kevin's Home" target="_blank">Kevin's Home</a></li><li class="links-of-blogroll-item"> <a href="https://cat.kevinroy.tk/video/" title="Kevin's Movie Station" target="_blank">Kevin's Movie Station</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序"><span class="nav-text">序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常用流程"><span class="nav-text">常用流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本控制"><span class="nav-text">版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工作区和暂存区之间"><span class="nav-text">工作区和暂存区之间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂存区和版本库之间"><span class="nav-text">暂存区和版本库之间</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#add-暂存区"><span class="nav-text">add 暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#commit-的概念"><span class="nav-text">commit 的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#branch-的概念"><span class="nav-text">branch 的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-init"><span class="nav-text">Git init</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-status"><span class="nav-text">Git status</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-add"><span class="nav-text">Git add</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-diff-diff-–git"><span class="nav-text">Git diff (diff –git)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-reset"><span class="nav-text">git reset</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-远程库"><span class="nav-text">Git 远程库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支管理"><span class="nav-text">分支管理</span></a></li></ol></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span><span class="with-love" id="animate"><i class="fa fa-heart"></i></span> <span class="author" itemprop="copyrightHolder">Kevin Roy Lo</span></div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span class="site-uv">我的第<span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 位朋友，</span> <span class="site-pv">历经<span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次回眸才与你相遇</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.ui.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script><script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script><script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('body');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script><script type="text/javascript">wpac_init=window.wpac_init||[],wpac_init.push({widget:"Rating",id:22405,el:"wpac-rating",color:"fadb14"}),function(){if(!("WIDGETPACK_LOADED"in window)){WIDGETPACK_LOADED=!0;var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//embed.widgetpack.com/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t.nextSibling)}}()</script><script src="//cdn.jsdelivr.net/npm/pangu@3.3.0/dist/browser/pangu.min.js"></script><script type="text/javascript">pangu.spacingPage()</script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><script>$(document).ready(function(){$(".header-inner").animate({padding:"25px 0 25px"},1e3)})</script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script><script>
+    function timer() {
+      var ages = moment.preciseDiff(moment(),moment(20181001,"YYYYMMDD"));
+      ages = ages.replace(/years?/, "年");
+      ages = ages.replace(/months?/, "月");
+      ages = ages.replace(/days?/, "天");
+      ages = ages.replace(/hours?/, "小时");
+      ages = ages.replace(/minutes?/, "分");
+      ages = ages.replace(/seconds?/, "秒");
+      ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+      div.innerHTML = `我已在此等候你 ${ages}`;
+    }
+    var div = document.createElement("div");
+
+    //插入到copyright之后
+    var copyright = document.querySelector(".copyright");
+    document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+
+    //插入到卜蒜子之后
+    //document.querySelector(".footer-inner").appendChild(div);
+
+    timer();
+    setInterval("timer()",1000)
+  </script><script src="/js/wobblewindow.js"></script><script>768<window.innerWidth&&$(document).ready(function(){$("#header").wobbleWindow({radius:50,movementTop:!1,movementLeft:!1,movementRight:!1,debug:!1}),$("#footer").wobbleWindow({radius:50,movementBottom:!1,movementLeft:!1,movementRight:!1,position:"absolute",debug:!1})})</script><script async src="https://script-1256884783.file.myqcloud.com/cursor/fireworks.js"></script><script src="https://script-1256884783.file.myqcloud.com/activate-power-mode.min.js"></script><script>POWERMODE.colorful=!0,POWERMODE.shake=!1,document.body.addEventListener("input",POWERMODE)</script><script>var titleTime,OriginTitile=document.title;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="(つェ⊂)给你送🎁来咯~"+OriginTitile,clearTimeout(titleTime)):(document.title="(*´∇｀*)圣诞节还没到呢💨"+OriginTitile,titleTime=setTimeout(function(){document.title=OriginTitile},2e3))})</script></body></html>

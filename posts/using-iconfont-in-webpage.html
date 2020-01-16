@@ -1,0 +1,342 @@
+<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><link href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" rel="stylesheet" type="text/css"><link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css"><link href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"><link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=6.4.2"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.4.2"><link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"6.4.2",sidebar:{position:"left",display:"always",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,fastclick:!1,lazyload:!1,tabs:!0,motion:{enable:!0,async:!0,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"搜索文章内容",hits_empty:"无法找到相关结果: ${query}",hits_stats:"${time} ms 内匹配到 ${hits} 条结果"}}}</script><meta name="description" content="阿里妈妈出品的 iconfont 是一个矢量图标管理、交流平台，支持矢量图、位图等格式下载，并提供便捷的前端项目植入引用方法，是当前Web开发中主流的icon解决方案。"><meta property="og:type" content="article"><meta property="og:title" content="【转】Web页面中引用iconfont图标"><meta property="og:url" content="https://kevinroy.tk/posts/using-iconfont-in-webpage.html"><meta property="og:site_name" content="Kevin&#39;s Blog"><meta property="og:description" content="阿里妈妈出品的 iconfont 是一个矢量图标管理、交流平台，支持矢量图、位图等格式下载，并提供便捷的前端项目植入引用方法，是当前Web开发中主流的icon解决方案。"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/thumbnails/iconfont.png!thumbnail"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/unicode.png"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/font-class.png"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/symbol.png"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/svg-palette.png"><meta property="og:image" content="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/quote-icon.png"><meta property="og:updated_time" content="2020-01-16T12:28:00.041Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="【转】Web页面中引用iconfont图标"><meta name="twitter:description" content="阿里妈妈出品的 iconfont 是一个矢量图标管理、交流平台，支持矢量图、位图等格式下载，并提供便捷的前端项目植入引用方法，是当前Web开发中主流的icon解决方案。"><meta name="twitter:image" content="https://yearito-1256884783.image.myqcloud.com/thumbnails/iconfont.png!thumbnail"><link rel="alternate" href="/atom.xml" title="Kevin's Blog" type="application/atom+xml"><link rel="canonical" href="https://kevinroy.tk/posts/using-iconfont-in-webpage.html"><script type="text/javascript" id="page.configurations">CONFIG.page={sidebar:""}</script><title>【转】Web页面中引用iconfont图标 | Kevin's Blog</title><noscript><style type="text/css">.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Kevin's Blog</span><span class="logo-line-after"><i></i></span></a></div></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-top"><a href="/top/" rel="section"><i class="menu-item-icon fa fa-fw fa-signal"></i><br>排行</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-tasks"></i><br>归档</a></li><li class="menu-item menu-item-books"><a href="/books/" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i><br>读书</a></li><li class="menu-item menu-item-movies"><a href="/movies/" rel="section"><i class="menu-item-icon fa fa-fw fa-video-camera"></i><br>电影</a></li><li class="menu-item menu-item-bookmark"><a href="/bookmark/" rel="section"><i class="menu-item-icon fa fa-fw fa-bookmark"></i><br>书签</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><div class="reading-progress-bar"></div><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://kevinroy.tk/posts/using-iconfont-in-webpage.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Kevin Roy Lo"><meta itemprop="description" content="🎄🎅 Where there is a will ,<br>🎈🎁 there is a way."><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Kevin's Blog"></span><header class="post-header"><h2 class="post-title" itemprop="name headline">【转】Web页面中引用iconfont图标</h2><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2019-01-29 13:06:04" itemprop="dateCreated datePublished" datetime="2019-01-29T13:06:04+00:00">2019-01-29</time></span><div class="post-symbolscount"> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-file-word-o"></i></span> <span class="post-meta-item-text">本文字数：</span> <span title="本文字数">4.6k</span></div></div></header><div class="post-body" itemprop="articleBody"><p><img src="https://yearito-1256884783.image.myqcloud.com/thumbnails/iconfont.png!thumbnail" alt="iconfont 首页" title="iconfont 首页"></p><p>阿里妈妈出品的 iconfont 是一个矢量图标管理、交流平台，支持矢量图、位图等格式下载，并提供便捷的前端项目植入引用方法，是当前Web开发中主流的icon解决方案。</p><a id="more"></a><p>想要在前端页面中引入图标，一个最原始的做法，就是下载图标的PNG图片格式，然后通过标签引入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;images/icon.png&quot; /&gt;</span><br></pre></td></tr></table></figure><p>当页面中图标数量比较少时，采用这种简单的做法并无不当，但如果项目中图标数量较多，并且应用需求比较复杂的时候，就会暴漏出以下问题：</p><ul><li>PNG图片是位图，缩放页面会导致图片模糊。</li><li>引入后不方便自由调整图标的大小和颜色，需要在外部编辑修改图片之后重新引入。</li></ul><p>一个绝佳的解决方案就是 <a href="https://www.iconfont.cn/" target="_blank" rel="noopener">iconfont</a>，在这个平台上不仅可以找到各种精美小图标，还能方便的集成矢量图标到前端项目中。</p><p>官方给出了三种 <a href="https://www.iconfont.cn/help/detail?helptype=code" target="_blank" rel="noopener">Web端引入方案</a>：</p><h1 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h1><p>这种方案的思路是将图标变成字体引入，然后通过HTML转义字符来引用图标，特点是：</p><ul><li>可以按照调整字体样式的方法来调整图标样式，如设置 <code>font-size</code> 调整尺寸大小，设置 <code>color</code> 属性修改图标颜色等。</li><li>因为是字体，所以不支持多色，这里所说的多色，意思是同一个图标里不允许出现多种颜色。</li></ul><p>使用方案如下：</p><p>每个图标项目都会自动生成一段唯一的Unicode引用代码（CSS样式），在前端项目中将这段代码引入：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">'iconfont'</span>;  <span class="comment">/* project id 964156 */</span></span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.eot'</span>);</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.eot?#iefix'</span>) <span class="built_in">format</span>(<span class="string">'embedded-opentype'</span>),</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.woff2'</span>) <span class="built_in">format</span>(<span class="string">'woff2'</span>),</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.woff'</span>) <span class="built_in">format</span>(<span class="string">'woff'</span>),</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.ttf'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>),</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.svg#iconfont'</span>) <span class="built_in">format</span>(<span class="string">'svg'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.iconfont</span>&#123;</span><br><span class="line">  <span class="attribute">font-family</span>:<span class="string">"iconfont"</span> <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">16px</span>;<span class="attribute">font-style</span>:normal;</span><br><span class="line">  <span class="attribute">-webkit-font-smoothing</span>: antialiased;</span><br><span class="line">  <span class="attribute">-webkit-text-stroke-width</span>: <span class="number">0.2px</span>;</span><br><span class="line">  <span class="attribute">-moz-osx-font-smoothing</span>: grayscale;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这里使用 <code>@font-face</code> 定义了一种叫做 <code>iconfont</code> 的字体（名字可以自定义），这个 <code>iconfont</code> 字体就跟微软雅黑、宋体等是一种性质了，为了搞定兼容性问题确保字体引入成功，设置了多种常见格式的字体源引入链接，如 eot、woff、ttf等。</p><p>后面这段CSS代码的意思就是，所有类名为 <code>iconfont</code> 的元素字体都强制使用 <code>iconfont</code> 字体族，这样就为HTML转义符转义为“图标”（本质还是字体，只不过长成了图标的样子）做好了铺垫。</p><p>然后在需要插入图标的位置插入如下HTML代码，其中的转义符可以在 iconfont 的各个图标中找到：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont"</span>&gt;</span>&amp;#x33;<span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure><p><img src="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/unicode.png" alt="Unicode 引用" title="Unicode 引用"></p><h1 id="Font-Class"><a href="#Font-Class" class="headerlink" title="Font Class"></a>Font Class</h1><p>从Unicode的引用方案中我们可以看到，HTML转义符都是形如 <code>&amp;#***;</code> 的样式，书写不直观，语义不明确，使用和维护都有诸多不便。于是 iconfont 推出一套语义化的方案，这就是 Font Class。使用方案如下：</p><p>直接在前端项目的HTML头部外链iconfont的图标项目CSS文件：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"//at.alicdn.com/t/font_964156_pr9i6o2kmf.css"</span>&gt;</span></span><br></pre></td></tr></table></figure><p>然后在需要插入图表的位置插入如下HTML代码，其中的元素类名 <code>icon-xxx</code> 可以在iconfont的各个图标中获取：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"iconfont icon-full-screen"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br></pre></td></tr></table></figure><p><img src="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/font-class.png" alt="Font Class 引用" title="Font Class 引用"></p><p>这个方案只是给Unicode重新包装了一翻，变得更方便使用了而已，为什么这么说呢？我们直接在浏览器中打开这个CSS文件来看看名堂（有删减）：</p><figure class="highlight css"><figcaption><span>http://at.alicdn.com/t/font_964156_pr9i6o2kmf.css</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">font-face</span> &#123;<span class="attribute">font-family</span>: <span class="string">"iconfont"</span>;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.eot?t=1548690018080'</span>); <span class="comment">/* IE9 */</span></span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.eot?t=1548690018080#iefix'</span>) <span class="built_in">format</span>(<span class="string">'embedded-opentype'</span>), <span class="comment">/* IE6-IE8 */</span></span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'data:application/x-font-woff2;charset=utf-8;base64,d09GMgAB......TB+KD1yrAQAAAA=='</span>) <span class="built_in">format</span>(<span class="string">'woff2'</span>),</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.woff?t=1548690018080'</span>) <span class="built_in">format</span>(<span class="string">'woff'</span>),</span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.ttf?t=1548690018080'</span>) <span class="built_in">format</span>(<span class="string">'truetype'</span>), <span class="comment">/* chrome, firefox, opera, Safari, Android, iOS 4.2+ */</span></span><br><span class="line">  <span class="built_in">url</span>(<span class="string">'//at.alicdn.com/t/font_964156_pr9i6o2kmf.svg?t=1548690018080#iconfont'</span>) <span class="built_in">format</span>(<span class="string">'svg'</span>); <span class="comment">/* iOS 4.1- */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.iconfont</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">"iconfont"</span> <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">  <span class="attribute">font-style</span>: normal;</span><br><span class="line">  <span class="attribute">-webkit-font-smoothing</span>: antialiased;</span><br><span class="line">  <span class="attribute">-moz-osx-font-smoothing</span>: grayscale;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-full-screen</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e616"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-love</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e71e"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-pause</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e615"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-playing</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e643"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-ring</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e601"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.icon-help</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">"\e609"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>是不是感觉似曾相识，这里将 Unicode 的引入代码统一封装了起来，只不过下面多了一些伪类的样式，其意义就是让你可以通过语义化的方法引用图标，比如你给一个图标元素添加了 <code>icon-full-screen</code> 类名，这里 <code>.icon-full-screen:before</code> 伪类样式就会帮你在元素中嵌入图标字符。</p><p>该方案的本质依旧和Unicode是一致的：图标变字体，再通过HTML转义符插入。所以Unicode方案中提到的无法使用多色图标的问题，这里依然未得到解决。</p><h1 id="Symbol"><a href="#Symbol" class="headerlink" title="Symbol"></a>Symbol</h1><p>这是一个可以支持多色图标的方案，官方的说法是：</p><blockquote><p>这是一种全新的使用方式，应该说这才是未来的主流，也是平台目前推荐的用法。</p></blockquote><div class="note"><p>没错，这是你没有体验过的船新版本，但是我才不会告诉你，iconfont平台自己用的是unicode和font-class的方案，可能是为了兼容 ie6 ?</p></div><p>这回不是引入CSS文件而是引入JS脚本了，其思路是通过JavaScript把图标项目中所有的SVG矢量图形统一添加到页面中并隐藏起来，后续用到图标的地方直接切图引用即可。</p><p>使用方案如下：</p><p>首先在前端项目的HTML文件中引入iconfont脚本：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"//at.alicdn.com/t/font_964156_pr9i6o2kmf.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><p>在样式文件中添加如下通用样式规则：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.icon</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1em</span>; <span class="attribute">height</span>: <span class="number">1em</span>;</span><br><span class="line">  <span class="attribute">vertical-align</span>: -<span class="number">0.15em</span>;</span><br><span class="line">  <span class="attribute">fill</span>: currentColor;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>然后在需要插入图标的位置插入如下HTML代码，其中的图标名 <code>#icon-xxx</code> 可以在iconfont的各个图标中获取：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">aria-hidden</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">use</span> <span class="attr">xlink:href</span>=<span class="string">"#icon-xxx"</span>&gt;</span><span class="tag">&lt;/<span class="name">use</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure><p><img src="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/symbol.png" alt="Symbol 引用" title="Symbol 引用"></p><p>通过这种方案引入 iconfont 图标，会在页面中发现多了一个SVG标签：</p><p><img src="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/svg-palette.png" alt="SVG 图标仓库" title="SVG 图标仓库"></p><p>你可以把这个SVG标签理解为一个图标仓库，或者说一个原始画板，其样式被刻意隐藏了起来：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line"><span class="selector-tag">width</span>: 0<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">height</span>: 0<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br></pre></td></tr></table></figure><p>查看页面中引入的图标元素，会发现 <code>use</code> 标签里多了相应图标的SVG矢量元素：</p><p><img src="https://yearito-1256884783.image.myqcloud.com/using-iconfont-in-webpage/quote-icon.png" alt="图标元素" title="图标元素"></p><p>可以理解为这里从图标仓库中引用了一份SVG代码以显示图标，这就是Symbol方案的关键所在了。</p><div class="note"><p>有兴趣的可以在 <a href="https://ant.design/components/icon/" target="_blank" rel="noopener">AntDesign Icon</a> 页面F12控制台中查看元素构成。</p></div><div class="reference-linking">参考链接</div><ul><li><a href="https://www.iconfont.cn/help/detail?helptype=code" target="_blank" rel="noopener">iconfont 帮助中心 | 代码应用</a></li></ul></div><div><div><div style="text-align:center;color:#bfbfbf;font-size:16px"> <span>-------- 本文结束</span><i class="fa fa-paw"></i> <span>感谢阅读 --------</span></div></div></div><div><div style="padding:10px 0;margin:20px auto;width:90%;text-align:center"><div></div> <button id="rewardButton" disable="enable" onclick='var qr=document.getElementById("QR");"none"===qr.style.display?qr.style.display="block":qr.style.display="none"'> <span>打赏</span></button><div id="QR" style="display:none"><div id="wechat" style="display:inline-block"> <img id="wechat_qr" src="/images/wechatpay.png" alt="Kevin Roy Lo 微信支付"><p>微信支付</p></div><div id="alipay" style="display:inline-block"> <img id="alipay_qr" src="/images/alipay.jpg" alt="Kevin Roy Lo 支付宝"><p>支付宝</p></div></div></div></div><div><script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><ul class="post-copyright"><li> <strong>本文标题：</strong> 【转】Web页面中引用iconfont图标</li><li class="post-copyright-author"> <strong>本文作者：</strong> Kevin Roy Lo</li><li> <strong>创建时间：</strong> 2019年01月29日 - 13时01分</li><li> <strong>修改时间：</strong> 2020年01月16日 - 12时01分</li><li class="post-copyright-link"> <strong>引用链接：</strong> <a href="https://kevinroy.tk/posts/using-iconfont-in-webpage.html" title="【转】Web页面中引用iconfont图标">https://kevinroy.tk/posts/using-iconfont-in-webpage.html</a><span class="copy-path" title="点击复制引用链接"><i style="cursor:pointer" class="fa fa-clipboard" data-clipboard-text="[Kevin Roy Lo's Blog | 【转】Web页面中引用iconfont图标](https://kevinroy.tk/posts/using-iconfont-in-webpage.html)" aria-label="复制成功"></i></span></li><li class="post-copyright-license"> <strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li></ul><script>var clipboard=new ClipboardJS(".fa-clipboard");clipboard.on("success",function(e){var a=document.createElement("div");a.innerHTML='<i class="fa fa-check-circle message-icon"></i><span class="message-content">'+e.trigger.getAttribute("aria-label")+"</span>",swal({content:a,className:"copy-success-message",timer:1e3,button:!1})})</script></div><footer class="post-footer"><div class="post-widgets"><div class="wp_rating"><div id="wpac-rating"></div></div></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/posts/using-iconfont-in-miniprogram.html" rel="prev" title="【转】如何在微信小程序中引用iconfont图标"><i class="fa fa-chevron-left"></i> 【转】如何在微信小程序中引用iconfont图标</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/posts/hexo-deploy-to-VPS.html" rel="next" title="【转】Hexo搭建个人博客系列：部署上线篇">【转】Hexo搭建个人博客系列：部署上线篇<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <a href="/"><img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Kevin Roy Lo"></a><p class="site-author-name" itemprop="name">Kevin Roy Lo</p><p class="site-description motion-element" itemprop="description">🎄🎅 Where there is a will ,<br>🎈🎁 there is a way.</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">14</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/index.html"><span class="site-state-item-count">7</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/index.html"><span class="site-state-item-count">9</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/kevinroy-lo" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:luoguangrong0312@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span></div><div class="cc-license motion-element" itemprop="license"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div><div class="links-of-blogroll motion-element links-of-blogroll-inline"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-link"></i> 友情链接</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"> <a href="https://cat.kevinroy.tk/" title="Kevin's Home" target="_blank">Kevin's Home</a></li><li class="links-of-blogroll-item"> <a href="https://cat.kevinroy.tk/video/" title="Kevin's Movie Station" target="_blank">Kevin's Movie Station</a></li></ul></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Unicode"><span class="nav-text">Unicode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Font-Class"><span class="nav-text">Font Class</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Symbol"><span class="nav-text">Symbol</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2020</span><span class="with-love" id="animate"><i class="fa fa-heart"></i></span> <span class="author" itemprop="copyrightHolder">Kevin Roy Lo</span></div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span class="site-uv">我的第<span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 位朋友，</span> <span class="site-pv">历经<span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次回眸才与你相遇</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="//cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/velocity-animate@1.2.1/velocity.ui.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script><script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script><script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('body');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script>!function(){var t=document.createElement("script"),e=window.location.protocol.split(":")[0];t.src="https"===e?"https://zz.bdstatic.com/linksubmit/push.js":"http://push.zhanzhang.baidu.com/push.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}()</script><script type="text/javascript">wpac_init=window.wpac_init||[],wpac_init.push({widget:"Rating",id:22405,el:"wpac-rating",color:"fadb14"}),function(){if(!("WIDGETPACK_LOADED"in window)){WIDGETPACK_LOADED=!0;var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//embed.widgetpack.com/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t.nextSibling)}}()</script><script src="//cdn.jsdelivr.net/npm/pangu@3.3.0/dist/browser/pangu.min.js"></script><script type="text/javascript">pangu.spacingPage()</script><script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script><script>$(document).ready(function(){$(".header-inner").animate({padding:"25px 0 25px"},1e3)})</script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script><script>
+    function timer() {
+      var ages = moment.preciseDiff(moment(),moment(20181001,"YYYYMMDD"));
+      ages = ages.replace(/years?/, "年");
+      ages = ages.replace(/months?/, "月");
+      ages = ages.replace(/days?/, "天");
+      ages = ages.replace(/hours?/, "小时");
+      ages = ages.replace(/minutes?/, "分");
+      ages = ages.replace(/seconds?/, "秒");
+      ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+      div.innerHTML = `我已在此等候你 ${ages}`;
+    }
+    var div = document.createElement("div");
+
+    //插入到copyright之后
+    var copyright = document.querySelector(".copyright");
+    document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+
+    //插入到卜蒜子之后
+    //document.querySelector(".footer-inner").appendChild(div);
+
+    timer();
+    setInterval("timer()",1000)
+  </script><script src="/js/wobblewindow.js"></script><script>768<window.innerWidth&&$(document).ready(function(){$("#header").wobbleWindow({radius:50,movementTop:!1,movementLeft:!1,movementRight:!1,debug:!1}),$("#footer").wobbleWindow({radius:50,movementBottom:!1,movementLeft:!1,movementRight:!1,position:"absolute",debug:!1})})</script><script async src="https://script-1256884783.file.myqcloud.com/cursor/fireworks.js"></script><script src="https://script-1256884783.file.myqcloud.com/activate-power-mode.min.js"></script><script>POWERMODE.colorful=!0,POWERMODE.shake=!1,document.body.addEventListener("input",POWERMODE)</script><script>var titleTime,OriginTitile=document.title;document.addEventListener("visibilitychange",function(){document.hidden?(document.title="(つェ⊂)给你送🎁来咯~"+OriginTitile,clearTimeout(titleTime)):(document.title="(*´∇｀*)圣诞节还没到呢💨"+OriginTitile,titleTime=setTimeout(function(){document.title=OriginTitile},2e3))})</script></body></html>
