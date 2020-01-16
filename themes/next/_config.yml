@@ -131,7 +131,7 @@ menu:
   #gallery: /gallery/ || camera-retro
   books: /books/ || book
   movies: /movies/ || video-camera
-  games: /games/ || gamepad
+  #games: /games/ || gamepad
   bookmark: /bookmark/ || bookmark
   about: /about/ || user
   #schedule: /schedule/ || calendar
