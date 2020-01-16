@@ -54,10 +54,34 @@ jobs:
             x3YLFLql3Nz8PfU73KLF2yjgxa5xoOQXOslLsX0Gd/U7W1Ou7+Wu"
         run: |
           mkdir -p ~/.ssh/
-          echo "$GITEE" > ~/.ssh/id_rsa
+          echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDE7o7JKfmc2AJ3QxyEHIjrXcqF2f3Bvh/mUMJnKiUn4jC/Ch7n8E+pu6+uR+3R31jSjTIdFM2PRBu2932t4fDZfGoEpURiQglvFcaAwust5NxKZjMcVXXv05eDH1W696U6/kWDxH9jaJz+bLD9fda2Vee+4TNTHqBqU1ezfifsL7/n8MZ5hA8vONq+o+DfgSfuBpmqnaPlHCRgteiV6QWBHgjUyBkBsY70vegS6nsWBvf6iN5oTdAubl/zz7xKKvZXg0ZCekt+hnMmTPKXWtCwHERuRq/KsCcOW3PoGMXfRaj0+dB3/LxYVBtlxyR+8mRWP+f1nTJN7xj9WVKmGTt/ luoguangrong0312@gmail.com" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           cat ~/.ssh/id_rsa
-          echo "$GITEE_PUB" > ~/.ssh/id_rsa.pub
+          echo "MIIEowIBAAKCAQEAxO6OySn5nNgCd0MchByI613Khdn9wb4f5lDCZyolJ+Iwvwoe\
+            5/BPqbuvrkft0d9Y0o0yHRTNj0Qbtvd9reHw2XxqBKVEYkIJbxXGgMLrLeTcSmYz\
+            HFV179OXgx9VuvelOv5Fg8R/Y2ic/myw/X3WtlXnvuEzUx6galNXs34n7C+/5/DG\
+            eYQPLzjavqPg34En7gaZqp2j5RwkYLXolekFgR4I1MgZAbGO9L3oEup7Fgb3+oje\
+            aE3QLm5f88+8Sir2V4NGQnpLfoZzJkzyl1rQsBxEbkavyrAnDltz6BjF30Wo9PnQ\
+            d/y8WFQbZcckfvJkVj/n9Z0yTe8Y/VlSphk7fwIDAQABAoIBADj/95IgNSCBoU0V\
+            vrY6cCL39buCWiFuv1rxeyNTHogJvyQ8cK+fbd9p9LKUHTDG3bWrqpqiP9E83Gy7\
+            +8ONhyHcEe+gSkfKZ2KgweDZCisxd9WM+TQ1RDqTWuJX+n9wWIHXwRUfleOXDwHR\
+            QfVNLA2AleA43JstXS8JSnQoirOgp5r7L52dwhRvTp2M2IhQxHU1lC1Uv69YG9bW\
+            7OzAro06OOnfFzNZAkE+9k0C5ktA0dA0jxBSXKYzbYnYR+ZHqwboOQU4W9K4o/c4\
+            voXXLkC+v/w5yKZ//YBnWCfych7aZ7rHDO9MLw8RrWm+IaGafB7NaP1/K+G+X+JZ\
+            wQNMqzECgYEA/PNcL2h1oMXIEyhbgUtm6F+DplVqq78PNcuTZBDYdVIdeu+Glspb\
+            swYal7Czi+9C/SPHFhMDvhRst/1jrdHOSwEh2tSf/iMOeD/dHvFUd8M7W6j6mAs1\
+            HDlThWXPtfgxYnN632lx3Br7pJQpVZVOBWzYiXAqJc0nN/jD+06O8wcCgYEAx05Q\
+            8QuO/tcdan7f+6QCihSM5EJjGERkQpuFf5I6cyRe37SJTgktYJrhdE9AG23D0SZ8\
+            C+9L64X1IrdASxy+2KzbjoaEjMXEoFv9Aj3GRLyauMRNOmM6ljlVSA/+44nKMIu9\
+            +G8rjQx3uigd1kIGHECo67AGs0HR4mJ6VNS+fckCgYEArT2rlFiRv2PWDLDmQt42\
+            g83u53u2zBvVuf1MXAthhLCRukHURvAe77Stf9ioj511ntPjJU4ukP+CGl0z6Lc5\
+            94q1+h8H2NF/toHe2rNkK4YN4FASGRIL9OGaP1GkebebcxcuP1cDgUEFugkzagcQ\
+            4YxTnYWxiCRCyQXajAKYyv8CgYAMTrLC39LZu9DuNZ2BPZSGkFRO+CaEZhzG3DG3\
+            OgFwAMv3BoAAGKL7tzS66PXte66+6KB6YDGQ/rmvhh9rRAApAyuftoDS7JeCy4tp\
+            KwVmUzs+s6iNNXl1s16nz40O4gBhVQ/LGppW4HE4RqfpBjS4Y+nKfBk90o+yaiBh\
+            wq1suQKBgGsPfmhee7J6YnCPlZN7fS2y/MyicndRRzO0W9YIyl6DY9SVZEaOn2NJ\
+            VFHdA69hnuqkdbfOq4BzB5zWhVEmGv0CcZel29LjCxmnUjGFa+uj65BsuEvH6ozt\
+            x3YLFLql3Nz8PfU73KLF2yjgxa5xoOQXOslLsX0Gd/U7W1Ou7+Wu" > ~/.ssh/id_rsa.pub
           chmod 600 ~/.ssh/id_rsa.pub
           cat ~/.ssh/id_rsa.pub
           ssh-keyscan -H gitee.com >> ~/.ssh/known_hosts
