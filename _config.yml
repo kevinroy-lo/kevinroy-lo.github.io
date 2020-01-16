@@ -79,8 +79,8 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   - type: git
-    repo: git@gitee.com:kevinroy-lo/blog.git
-    branch: master
+    repo: git@github.com:kevinroy-lo/blog.git
+    branch: web
     message: Kevin's blog.
   # - type: git
   #   repo: git@gitlab.com:kevinroy0312/kevinroy_blog.git
