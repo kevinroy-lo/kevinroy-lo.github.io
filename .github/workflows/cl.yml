@@ -29,15 +29,12 @@ jobs:
           GITEE_PUB: ${{secrets.GITEE_PUB}}
         run: |
           mkdir -p ~/.ssh/
-
           echo "$GITEE" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           cat ~/.ssh/id_rsa
-
           echo "$GITEE_PUB" > ~/.ssh/id_rsa.pub
           chmod 600 ~/.ssh/id_rsa.pub
           cat ~/.ssh/id_rsa.pub
-
           ssh-keyscan -H gitee.com >> ~/.ssh/known_hosts
           git config --global user.name "kevinroy"
           git config --global user.email "luoguangrong0312@gmail.com"
