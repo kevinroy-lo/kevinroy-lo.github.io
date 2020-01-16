@@ -1,4 +1,5 @@
 # 请确保添加的 Secrets 名字为 ACTION_DEPLOY_KEY
+# 65cab5a1c0b71e0db23ab2104e344b777178c8de
 name: 自动部署 Hexo
 
 on:
@@ -25,6 +26,7 @@ jobs:
       - name: 配置 Git 环境
         env:
           ACTION_DEPLOY_KEY: ${{secrets.ACTION_DEPLOY_KEY}}
+          SSH_KEY: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDE7o7JKfmc2AJ3QxyEHIjrXcqF2f3Bvh/mUMJnKiUn4jC/Ch7n8E+pu6+uR+3R31jSjTIdFM2PRBu2932t4fDZfGoEpURiQglvFcaAwust5NxKZjMcVXXv05eDH1W696U6/kWDxH9jaJz+bLD9fda2Vee+4TNTHqBqU1ezfifsL7/n8MZ5hA8vONq+o+DfgSfuBpmqnaPlHCRgteiV6QWBHgjUyBkBsY70vegS6nsWBvf6iN5oTdAubl/zz7xKKvZXg0ZCekt+hnMmTPKXWtCwHERuRq/KsCcOW3PoGMXfRaj0+dB3/LxYVBtlxyR+8mRWP+f1nTJN7xj9WVKmGTt/ luoguangrong0312@gmail.com"
         run: |
           mkdir -p ~/.ssh/
           echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
@@ -41,17 +43,11 @@ jobs:
 
       - name: 安装插件
         run: |
-          npm install hexo-renderer-pug --save
-          npm install hexo-renderer-stylus --save
-          npm install hexo-deployer-git --save
-          npm install hexo-generator-search --save
-          npm install hexo-douban --save
-          npm install hexo-generator-feed --save
-          npm install hexo-abbrlink --save
-          npm install hexo-wordcount --save
+          npm install
 
       - name: 部署博客
         run: |
           rm -rf .deploy_git
-          hexo g && hexo douban -bm && hexo deploy
+          echo "$SSH_KEY" > ~/.ssh/id_rsa
+          hexo clean && hexo g && hexo douban -bm && gulp && hexo deploy
           rm ~/.ssh/id_rsa
